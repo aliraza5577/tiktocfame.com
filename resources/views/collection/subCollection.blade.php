@@ -28,7 +28,7 @@
             <div class="row">
                 @if($products->count() > 0)
                     @foreach ($products as $product)
-                        <div class="col-md-3 card-single">
+                        <div class="col-6 col-md-4 col-lg-2 card-single">
                             <a href="{{ url('product/'.$product->slug) }}">
                                 @if($product->getImage->count() > 0)
                                     <img src="{{ $product->getImage->first()->getProductImage() }}" alt="{{ $product->name }}" />

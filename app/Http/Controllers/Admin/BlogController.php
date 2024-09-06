@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\CategoryModel;
+use App\Models\BlogModel;
 use Auth;
 use Str;
 
-class CategoriesController extends Controller
+
+class BlogController extends Controller
 {
-    // Category Lists
+    // Blog Lists
     public function list(){
-        $data['getRecord'] = CategoryModel::getRecord();
-        $data['header_title'] = 'All Categories';
-        // dd(DB::getQueryLog());
-        return view('backend.category.list', $data);
-    }
-    // Add Category
-    public function add(){
-        $data['header_title'] = 'Add New Category';
-        return view('backend.category.add', $data);
+        $data['getRecord'] = BlogModel::getRecord();
+        $data['header_title'] = 'All Blog';
+        return view('backend.blog.list', $data);
     }
 
-    // Create Category
+    // Add Blog
+    public function add(){
+        $data['header_title'] = 'Add New Blog';
+        return view('backend.blog.add', $data);
+    }
+
+    // Create Blog
     public function insert(Request $request){
 
         request()->validate([
-            'name' => 'required',
+            'title' => 'required',
             'meta_title' => 'required',
-            'slug' => 'required|unique:category',
+            'slug' => 'required|unique:blog',
             'featured_image' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:2048',
             'banner_image' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:2048'
         ]);
@@ -38,14 +38,13 @@ class CategoriesController extends Controller
         $slug  = $request->slug;
         $slug = Str::slug($slug);
 
-
         $featured_image = $request->file('featured_image');
         if(!empty($featured_image)){
             if($featured_image->isValid()){
                 $ext = $featured_image->getClientOriginalExtension();
                 $randomStr = date('Ymdhis').Str::random(10);
                 $filename = strtolower($randomStr).'.'.$ext;
-                $featured_image->move('public/upload/category', $filename);
+                $featured_image->move('public/upload/blog', $filename);
                 $featured_image = $filename;
             }
         }
@@ -55,39 +54,39 @@ class CategoriesController extends Controller
                 $ext = $banner_image->getClientOriginalExtension();
                 $randomStr = date('Ymdhis').Str::random(10);
                 $filename = strtolower($randomStr).'.'.$ext;
-                $banner_image->move('public/upload/category', $filename);
+                $banner_image->move('public/upload/blog', $filename);
                 $banner_image = $filename;
             }
         }
 
-
-
-        $save = new CategoryModel;
-        $save->name = $request->name;
+        $save = new BlogModel;
+        $save->title = $request->title;
         $save->slug  = $slug;
+        $save->description  = $request->description;
         $save->featured_image  = $featured_image;
         $save->banner_image  = $banner_image;
         $save->status = $request->status;
         $save->meta_title = $request->meta_title;
         $save->meta_keyword = $request->meta_keyword;
         $save->meta_desc = $request->meta_desc;
-        $save->seo_schema = $request->seo_schema;
         $save->created_by = Auth::user()->id;
         $save->save();
 
-        return redirect('admin/categories')->with('success', 'Category Added Succesfully.');
+        return redirect('admin/blog')->with('success', 'Blog Added Succesfully.');
     }
 
-    // Edit Category
+    // Edit Blog
     public function edit($id){
-        $data['getRecord'] = CategoryModel::getSingle($id);
-        $data['header_title'] = 'Edit Category';
-        return view('backend.category.edit', $data);
+        $data['getRecord'] = BlogModel::getSingle($id);
+        $data['header_title'] = 'Edit Blog';
+        return view('backend.blog.edit', $data);
     }
-    // Update Category
+
+
+    // Update Blog
     public function update($id, Request $request){
         request()->validate([
-            'name' => 'required',
+            'title' => 'required',
             'meta_title' => 'required',
             'slug' => 'required|unique:category,slug,'.$id,
             'featured_image' => 'file|mimes:jpg,jpeg,png,gif,webp|max:2048',
@@ -96,8 +95,7 @@ class CategoriesController extends Controller
 
         $slug  = $request->slug;
         $slug = Str::slug($slug);
-
-        $category = CategoryModel::getSingle($id);
+        $blog = BlogModel::getSingle($id);
 
 
         if ($request->hasFile('featured_image')) {
@@ -106,9 +104,9 @@ class CategoriesController extends Controller
                 $ext = $featured_image->getClientOriginalExtension();
                 $randomStr = date('Ymdhis').Str::random(10);
                 $filename = strtolower($randomStr).'.'.$ext;
-                $featured_image->move('public/upload/category', $filename);
+                $featured_image->move('public/upload/blog', $filename);
                 $featured_image = $filename;
-                $category->featured_image  = $featured_image;
+                $blog->featured_image  = $featured_image;
             }
         }
 
@@ -118,36 +116,35 @@ class CategoriesController extends Controller
                 $ext = $banner_image->getClientOriginalExtension();
                 $randomStr = date('Ymdhis').Str::random(10);
                 $filename = strtolower($randomStr).'.'.$ext;
-                $banner_image->move('public/upload/category', $filename);
+                $banner_image->move('public/upload/blog', $filename);
                 $banner_image = $filename;
-                $category->banner_image  = $banner_image;
+                $blog->banner_image  = $banner_image;
             }
         }
 
 
+        $blog->title = $request->title;
+        $blog->slug  = $slug;
+        $blog->status = $request->status;
+        $blog->meta_title = $request->meta_title;
+        $blog->meta_keyword = $request->meta_keyword;
+        $blog->meta_desc = $request->meta_desc;
+        $blog->created_by = Auth::user()->id;
+        $blog->save();
 
-
-
-        $category->name = $request->name;
-        $category->slug  = $slug;
-        $category->status = $request->status;
-        $category->meta_title = $request->meta_title;
-        $category->meta_keyword = $request->meta_keyword;
-        $category->meta_desc = $request->meta_desc;
-        $category->seo_schema = $request->seo_schema;
-        $category->created_by = Auth::user()->id;
-        $category->save();
-
-        return redirect('admin/categories')->with('success', 'Category Updated Succesfully.');
+        return redirect('admin/blog')->with('success', 'Category Updated Succesfully.');
     }
 
-    // Delete Category
+
+    // Delete Blog
     public function delete($id){
-        $user = CategoryModel::getSingle($id);
+        $user = BlogModel::getSingle($id);
         $user->is_delete = 1;
         $user->save();
-        return redirect()->back()->with('success', 'Category Succesfully Deleted.');
+        return redirect()->back()->with('success', 'Blog Succesfully Deleted.');
     }
+
+
 
 
 }

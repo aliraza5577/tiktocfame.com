@@ -11,7 +11,7 @@
             <h1>{{ $product->name }}</h1>
             <div class="row">
                 <!-- Product Left Side -->
-                <div class="col-6 productImages">
+                <div class="col-12 col-md-6 productImages">
                     <div class="featuredImage">
                         @if($product->getImage->count() > 0)
                             <img src="{{ $product->getImage->first()->getProductImage() }}" alt="{{ $product->name }}" />
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 {{-- Form Side --}}
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="productCustomQuote">
                         <h3>GET CUSTOM QUOTE</h3>
                         <form>

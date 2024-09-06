@@ -88,6 +88,9 @@
                             <input type="text" value="{{ old('meta_title', $product->meta_title) }}" name="meta_title" class="form-control form-control-rounded m-b-sm" placeholder="Enter Meta Title">
                             <div style="color: red;">{{ $errors->first('meta_title') }}</div>
                             <input type="text" value="{{ old('meta_keyword', $product->meta_keyword) }}" name="meta_keyword" class="form-control form-control-rounded m-b-sm" placeholder="Enter Meta Keyword">
+
+                            <input type="text" value="{{ old('seo_schema', $product->seo_schema) }}" name="seo_schema" class="form-control form-control-rounded m-b-sm" placeholder="Enter Schema">
+
                             <label>Meta Description</label>
                             <textarea name="meta_desc" style="width: 100%;height: 150px;"> {{ old('meta_desc', $product->meta_desc) }}</textarea>
                             <br />

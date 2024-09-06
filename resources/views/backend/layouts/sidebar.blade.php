@@ -61,6 +61,20 @@
                     </li>
                 </ul>
             </li>
+            <li class="@if(Request::segment(2) =='blog') active-page @endif">
+                <a href="{{ url('admin/blog') }}">
+                    <i class="material-icons-two-tone">article</i>Blogs
+                    <i class="material-icons has-sub-menu">keyboard_arrow_right</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{ url('admin/blog') }}">All</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('admin/blog/add') }}">Add</a>
+                    </li>
+                </ul>
+            </li>
             <li class="@if(Request::segment(2) =='quote') active-page @endif">
                 <a href="{{ url('admin/quote/instant') }}">
                     <i class="material-icons-two-tone">store</i>Quotes

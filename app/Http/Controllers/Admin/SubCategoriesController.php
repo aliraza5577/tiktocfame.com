@@ -70,6 +70,7 @@ class SubCategoriesController extends Controller
         $save->meta_title = $request->meta_title;
         $save->meta_keyword = $request->meta_keyword;
         $save->meta_desc = $request->meta_desc;
+        $save->seo_schema = $request->seo_schema;
         $save->created_by = Auth::user()->id;
         $save->save();
 
@@ -132,6 +133,7 @@ class SubCategoriesController extends Controller
         $sub_category->meta_title = $request->meta_title;
         $sub_category->meta_keyword = $request->meta_keyword;
         $sub_category->meta_desc = $request->meta_desc;
+        $sub_category->seo_schema = $request->seo_schema;
         $sub_category->save();
 
         return redirect('admin/sub_categories')->with('success', 'Sub Category Updated Succesfully.');

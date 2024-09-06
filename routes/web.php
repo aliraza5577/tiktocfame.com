@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\BlogController;
 
 
 // Frontend Controllers
@@ -36,6 +37,8 @@ use App\Http\Controllers\InstantQuoteController;
 // FrontEnd Routes
 Route::get('/', [HomeController::class, 'index']);
 Route::get('gallery', [HomeController::class, 'gallery']);
+Route::get('blog', [HomeController::class, 'blog']);
+Route::get('blog/{slug}', [HomeController::class, 'blog_post']);
 Route::get('all-collections', [CollectionController::class, 'all_collections']);
 Route::get('collection/{category_slug}', [CollectionController::class, 'collection']);
 Route::get('collection/{category_slug}/{subcategory_slug}', [CollectionController::class, 'sub_collection']);
@@ -100,6 +103,13 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/product/edit/{id}', [ProductController::class, 'update']);
     Route::get('admin/product/delete/{id}', [ProductController::class, 'delete']);
     Route::get('admin/product/image_delete/{id}', [ProductController::class, 'image_delete']);
+    // Blog Routes
+    Route::get('admin/blog', [BlogController::class, 'list']);
+    Route::get('admin/blog/add', [BlogController::class, 'add']);
+    Route::post('admin/blog/add', [BlogController::class, 'insert']);
+    Route::get('admin/blog/edit/{id}', [BlogController::class, 'edit']);
+    Route::post('admin/blog/edit/{id}', [BlogController::class, 'update']);
+    Route::get('admin/blog/delete/{id}', [BlogController::class, 'delete']);
     // Quotes
     Route::get('admin/quote/instant', [InstantQuoteController::class, 'index']);
     Route::get('admin/quote/instant/{id}', [InstantQuoteController::class, 'getQuoteDetails']);

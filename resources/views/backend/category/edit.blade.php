@@ -47,6 +47,7 @@
                             <input type="text" value="{{ old('meta_title', $getRecord->meta_title) }}" name="meta_title" class="form-control form-control-rounded m-b-sm" placeholder="Enter Meta Title">
                             <div style="color: red;">{{ $errors->first('meta_title') }}</div>
                             <input type="text" value="{{ old('meta_keyword', $getRecord->meta_keyword) }}" name="meta_keyword" class="form-control form-control-rounded m-b-sm" placeholder="Enter Meta Keyword">
+                            <input type="text" value="{{ old('seo_schema', $getRecord->seo_schema) }}" name="seo_schema" class="form-control form-control-rounded m-b-sm" placeholder="Enter Schema">
                             <textarea name="meta_desc" placeholder="Meta Description" style="width: 100%;height: 150px;"> {{ old('meta_desc', $getRecord->meta_desc) }}</textarea>
                             <br />
                             <br />
