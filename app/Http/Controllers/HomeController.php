@@ -12,6 +12,10 @@ class HomeController extends Controller
 {
     //HomePage
     public function index(){
+        $data['meta_title'] = 'Home - Citi Packaging';
+        $data['meta_keyword'] = 'Home';
+        $data['meta_desc'] = 'Home';
+        $data['seo_schema'] = 'Home';
         $data['getRecord'] = CategoryModel::getRecord();
         $data['getSubCategories'] = SubCategoryModel::getActiveRecord();
         $data['top_products'] = ProductModel::getActiveRecord('desc');
@@ -19,13 +23,22 @@ class HomeController extends Controller
         return view('home', $data);
     }
 
+
     //Gallery
     public function gallery(){
-        return view('gallary');
+        $data['meta_title'] = 'Gallery - Citi Packaging';
+        $data['meta_keyword'] = 'Gallery';
+        $data['meta_desc'] = 'Gallery';
+        $data['seo_schema'] = 'Gallery';
+        return view('gallary', $data);
     }
 
     // Blog
     public function blog(){
+        $data['meta_title'] = 'Blog - Citi Packaging';
+        $data['meta_keyword'] = 'Blog';
+        $data['meta_desc'] = 'Blog';
+        $data['seo_schema'] = 'Blog';
         $data['getRecord'] = BlogModel::getRecordActive();
         return view('blog.index', $data);
     }
@@ -33,7 +46,12 @@ class HomeController extends Controller
 
     // Blog Post
     public function blog_post($slug){
-        $data['blog'] = BlogModel::where('slug', $slug)->firstOrFail();
+        $blog = BlogModel::where('slug', $slug)->firstOrFail();
+        $data['blog'] = $blog;
+        $data['meta_title'] = $blog->meta_title;
+        $data['meta_keyword'] = $blog->meta_keyword;
+        $data['meta_desc'] = $blog->meta_desc;
+        $data['seo_schema'] = $blog->seo_schema;
         return view('blog.post', $data);
     }
 

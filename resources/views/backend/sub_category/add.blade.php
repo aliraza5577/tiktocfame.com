@@ -1,4 +1,10 @@
 @extends('backend.layouts.app')
+
+@section('style')
+    <link href="{{ url('public/assets/plugins/summernote/summernote-lite.min.css') }}" rel="stylesheet">
+@endsection
+
+
 @section('content')
 <div class="content-wrapper">
     <div class="container">
@@ -39,6 +45,13 @@
                             <input type="file" name="banner_image" accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Image">
                             <div style="color: red;">{{ $errors->first('banner_image') }}</div>
 
+
+                            <br />
+                            <label>Description</label>
+                            <textarea class="editor" name="description" style="width: 100%;height: 150px;"> {{ old('description') }}</textarea>
+                            <br />
+                            <br />
+
                             <label>Status</label>
                             <select name="status" class="form-select form-control form-control-rounded m-b-sm">
                                 <option {{ (old('status') == 0) ? 'selected' : '' }} value="0">Active</option>
@@ -63,4 +76,14 @@
 
     </div>
 </div>
+@endsection
+
+
+@section('script')
+<script src="{{ url('public/assets/plugins/summernote/summernote-lite.min.js') }}"></script>
+    <script type="text/javascript">
+        $('.editor').summernote({
+            height: 200
+        });
+    </script>
 @endsection

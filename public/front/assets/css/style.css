@@ -226,7 +226,7 @@ a:hover {
 .category-wrap{text-align: center;}
 .category-wrap h2{text-transform: uppercase;letter-spacing: 1px;}
 .card-single{margin: 20px 0;}
-.card-single img{border-radius: 50%;}
+.card-single img{border-radius: 10px;}
 .card-single h3{margin-top: 10px;}
 .card-single a:hover h3{color: var(--secondary-color);}
 .main-btn{background: var(--secondary-color);color: #fff;padding: 10px 25px;letter-spacing: 1px;border-radius: 30px;}
@@ -281,8 +281,8 @@ a:hover {
 
 
 /* Product Page */
-.product-details{background: #12aeae;}
-.product-details h1{margin-bottom: 30px;color: #fff;}
+.product-details{background: #efefef;}
+.product-details h1{margin-bottom: 30px;color: #333;}
 .productImages{}
 .featuredImage{padding: 10px;text-align: center;}
 .featuredImage img{width: 90%;}
@@ -310,7 +310,7 @@ a:hover {
 .breadcrums p{text-transform: uppercase;letter-spacing: 2px;}
 .breadcrums p span{margin: 0 15px;}
 .breadcrums p a:hover{opacity: .7;}
-.product-details .breadcrums p, .product-details .breadcrums a{color: #fff;}
+.product-details .breadcrums p, .product-details .breadcrums a{color: #777;}
 .product-details .breadcrums{padding: 0 0 30px;}
 
 /* Footer */

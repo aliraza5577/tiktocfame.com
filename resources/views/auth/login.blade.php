@@ -8,7 +8,7 @@
     <meta name="description" content="Responsive Admin Dashboard Template">
     <meta name="keywords" content="admin,dashboard">
     <meta name="author" content="stacks">
-    
+
     <!-- Title -->
     <title>Login</title>
 
@@ -21,7 +21,7 @@
     <link href="{{ url('public/assets/plugins/perfectscroll/perfect-scrollbar.css') }}" rel="stylesheet">
     <link href="{{ url('public/assets/plugins/pace/pace.css') }}" rel="stylesheet">
 
-    
+
     <!-- Theme Styles -->
     <link href="{{ url('public/assets/css/main.min.css') }}" rel="stylesheet">
     <link href="{{ url('public/assets/css/custom.css') }}" rel="stylesheet">
@@ -38,7 +38,9 @@
             <div class="logo">
                 <a href="#">Blog</a>
             </div>
-            <p class="auth-description">Please sign-in to your account and continue to the dashboard.<br>Don't have an account? <a href="{{url('register')}}">Sign Up</a></p>
+            <p class="auth-description">Please sign-in to your account and continue to the dashboard.
+                {{-- <br>Don't have an account? <a href="{{url('register')}}">Sign Up</a> --}}
+            </p>
 
 
             @if(!empty(session('success')))
@@ -59,7 +61,7 @@
 
                 <div class="auth-submit">
                     <input type="submit" value="Login">
-                    <a href="{{url('forget-password')}}" class="auth-forgot-password float-end">Forgot password?</a>
+                    {{-- <a href="{{url('forget-password')}}" class="auth-forgot-password float-end">Forgot password?</a> --}}
                 </div>
                 <div class="auth-credentials m-b-xxl">
                     <br />
@@ -68,7 +70,7 @@
             </form>
         </div>
     </div>
-    
+
     <!-- Javascripts -->
     <script src="{{ url('public/assets/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ url('public/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>

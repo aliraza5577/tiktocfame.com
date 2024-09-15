@@ -9,9 +9,9 @@
                 </div>
             </div>
             <div class="col-md-6 searchBar">
-                <form action="" method="get" class="search-form">
+                <form action="{{ url('search') }}" method="GET" class="search-form">
                     <div class="form-group">
-                        <input type="text" name="query" class="form-control" placeholder="Search..." value="{{ request('query') }}">
+                        <input type="text" name="query" class="form-control" placeholder="Search..." value="{{ request('query') }}" required>
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </div>
                 </form>

@@ -1,11 +1,11 @@
 <div class="app-sidebar">
     <div class="logo">
-        <a href="{{ url('/') }}" class="logo-icon"><span class="logo-text">Box Print</span></a>
+        <a href="{{ url('/') }}" class="logo-icon"><span class="logo-text">Citi Packaging</span></a>
         <div class="sidebar-user-switcher user-activity-online">
             <a href="#">
-                {{-- <img src="{{ url('public/assets/images/avatars/avatar.png') }}">
+                {{-- <img src="{{ url('public/front/assets/img/logo.svg') }}">
                 <span class="activity-indicator"></span> --}}
-                <span class="user-info-text">{{ Auth::user()->name }}</span>
+                {{-- <span class="user-info-text">{{ Auth::user()->name }}</span> --}}
             </a>
         </div>
     </div>

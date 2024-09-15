@@ -226,3 +226,6 @@
 
 
 @endsection
+@section('script')
+<script src="{{ url('public/front/assets/js/instant_quote.js') }}"></script>
+@endsection

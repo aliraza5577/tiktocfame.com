@@ -7,10 +7,13 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge" />
 	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="{{ $meta_desc }}" data-rh="true">
+    <meta name="keywords" content="{{ $meta_keyword }}">
 	<!--====== Title ======-->
-	<title> Home - Box Print </title>
+	<title>{{ $meta_title }}</title>
+
 	<!--====== Favicon Icon ======-->
-	<link rel="shortcut icon" href="{{ url('public/upload/fav.webp') }}" type="img/png" />
+	<link rel="shortcut icon" href="{{ url('public/front/assets/img/favicon.png') }}" type="img/png" />
 	<!--====== Animate Css ======-->
 	<link rel="stylesheet" href="{{ url('public/front/assets/css/animate.min.css') }}">
 	<!--====== Bootstrap css ======-->
@@ -21,6 +24,13 @@
 	<link rel="stylesheet" href="{{ url('public/front/assets/css/slick.css') }}" />
 	<!--====== Style css ======-->
 	<link rel="stylesheet" href="{{ url('public/front/assets/css/style.css') }}" />
+
+
+    <script type="application/ld+json">
+        {{ $seo_schema }}
+    </script>
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
 </head>
 
 <body>
@@ -41,6 +51,9 @@
 	{{-- <script src="{{ url('public/front/assets/js/slick.min.js') }}"></script> --}}
 	<!--====== Main js ======-->
 	<script src="{{ url('public/front/assets/js/main.js') }}"></script>
+
+
+
     @yield('script')
 </body>
 

@@ -64,6 +64,7 @@ class SubCategoriesController extends Controller
         $save->name = $request->name;
         $save->category_id = $request->category_id;
         $save->slug  = $slug;
+        $save->description  = $request->description;
         $save->featured_image  = $featured_image;
         $save->banner_image  = $banner_image;
         $save->status = $request->status;
@@ -129,6 +130,7 @@ class SubCategoriesController extends Controller
         $sub_category->category_id = $request->category_id;
         $sub_category->name = $request->name;
         $sub_category->slug  = $slug;
+        $sub_category->description  = $request->description;
         $sub_category->status = $request->status;
         $sub_category->meta_title = $request->meta_title;
         $sub_category->meta_keyword = $request->meta_keyword;

@@ -8,7 +8,7 @@
     <meta name="keywords" content="admin,dashboard">
     <meta name="author" content="stacks">
     <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
+
     <!-- Title -->
     <title>{{ !empty($header_title) ? $header_title : ''}} - Box Print</title>
 
@@ -24,8 +24,8 @@
     <link href="{{ url('public/assets/css/main.min.css') }}" rel="stylesheet">
     <link href="{{ url('public/assets/css/custom.css') }}" rel="stylesheet">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('public/assets/images/neptune.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('public/assets/images/neptune.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('public/front/assets/img/favicon.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('public/front/assets/img/favicon.png') }}" />
 
 
     @yield('style')
@@ -33,7 +33,7 @@
 <body>
     <div class="app align-content-stretch d-flex flex-wrap">
         @include('backend.layouts.sidebar')
-        
+
         @include('backend.layouts.header')
 
             <div class="app-content">
@@ -42,7 +42,7 @@
 
         </div>
     </div>
-    
+
     <!-- Javascripts -->
     <script src="{{ url('public/assets/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ url('public/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>

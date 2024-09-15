@@ -13,43 +13,45 @@
                         @if(!empty(session('success')))
                             <div class="alert alert-success">{{ session('success') }}</div>
                         @endif
-                        <form method="POST" action="{{ url('instent_quote') }}">
+                        <form id="quoteForm" method="POST">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-6">
-                                    <input type="text" value="{{ old('product') }}" name="product" placeholder="Product Name" />
-                                    <div style="color: red;">{{ $errors->first('product') }}</div>
+                                    <input type="text" name="product" placeholder="Product Name" />
+                                    <div id="error-product" style="color: red;"></div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" value="{{ old('quantity') }}" name="quantity" placeholder="Quantity" />
-                                    <div style="color: red;">{{ $errors->first('quantity') }}</div>
+                                    <input type="text" name="quantity" placeholder="Quantity" />
+                                    <div id="error-quantity" style="color: red;"></div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <input type="text" value="{{ old('name') }}" name="name" placeholder="Name" required />
-                                    <div style="color: red;">{{ $errors->first('name') }}</div>
+                                    <input type="text" name="name" placeholder="Name" />
+                                    <div id="error-name" style="color: red;"></div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" value="{{ old('phone') }}" name="phone" placeholder="Phone" required />
-                                    <div style="color: red;">{{ $errors->first('phone') }}</div>
+                                    <input type="text" name="phone" placeholder="Phone" />
+                                    <div id="error-phone" style="color: red;"></div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <input type="email" value="{{ old('email') }}" name="email" placeholder="Email" required />
-                                    <div style="color: red;">{{ $errors->first('email') }}</div>
+                                    <input type="email" name="email" placeholder="Email" />
+                                    <div id="error-email" style="color: red;"></div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <textarea name="message" placeholder="Dexcribe Here"></textarea>
+                                    <textarea name="message" placeholder="Describe Here"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <input type="submit" value="Submit"/>
+                                    <input type="submit" value="Submit" />
                                 </div>
                             </div>
                         </form>
+                        <div id="success-message" style="color: green;"></div>
+                        <div id="error-message" style="color: red;"></div>
                     </div>
                 </div>
 

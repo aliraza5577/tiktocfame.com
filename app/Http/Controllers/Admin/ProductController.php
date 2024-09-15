@@ -154,4 +154,20 @@ class ProductController extends Controller
         $image->delete();
         return redirect()->back()->with('success', 'Product Image Succesfully Deleted.');
     }
+
+
+    // Search Products
+    public function searchProducts(Request $request)
+    {
+        $data['meta_title'] = 'Search - Citi Packaging';
+        $data['meta_keyword'] = '';
+        $data['meta_desc'] = '';
+        $data['seo_schema'] = '';
+        $query = $request->input('query');
+        $data['products'] = ProductModel::where('name', 'LIKE', "%{$query}%")
+                    ->orWhere('description', 'LIKE', "%{$query}%")
+                    ->get();
+
+        return view('search_results', $data);
+    }
 }

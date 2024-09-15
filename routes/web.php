@@ -45,6 +45,7 @@ Route::get('collection/{category_slug}/{subcategory_slug}', [CollectionControlle
 Route::get('product/{product_slug}', [CollectionController::class, 'single_product']);
 Route::post('instent_quote', [InstantQuoteController::class, 'add']);
 Route::post('custom_quote', [CustomQuoteController::class, 'add']);
+Route::get('search', [ProductController::class, 'searchProducts']);
 
 
 
