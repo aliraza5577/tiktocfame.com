@@ -145,15 +145,31 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product Succesfully Deleted.');
     }
 
-    // Delete Product
-    public function image_delete($id){
+    // Delete Product Image
+    // public function image_delete($id){
+    //     $image = ProductImageModel::getSingle($id);
+    //     if(!empty($image->getProductImage())){
+    //         unlink('public/upload/products/'.$image->image_name);
+    //     }
+    //     $image->delete();
+    //     return redirect()->back()->with('success', 'Product Image Succesfully Deleted.');
+    // }
+
+    // Delete Product Image
+    public function imageDelete($id)
+    {
         $image = ProductImageModel::getSingle($id);
-        if(!empty($image->getProductImage())){
-            unlink('public/upload/products/'.$image->image_name);
+
+        if ($image && !empty($image->getProductImage())) {
+            $imagePath = 'public/upload/products/' . $image->image_name;
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
         }
         $image->delete();
-        return redirect()->back()->with('success', 'Product Image Succesfully Deleted.');
+        return response()->json(['success' => 'Product Image successfully deleted.']);
     }
+
 
 
     // Search Products

@@ -51,9 +51,9 @@
                                 <div class="row">
                                     @foreach($product->getImage as $image)
                                         @if($image && !empty($image->getProductImage()))
-                                            <div class="col-md-2">
+                                            <div class="col-md-2" id="image-{{ $image->id }}">
                                                 <img src="{{ $image->getProductImage() }}" class="img-thumbnail">
-                                                <a class="btn btn-danger custom-btn" onclick="return confirm('Are you sure you want to delete?');" href="{{ url('admin/product/image_delete/'.$image->id) }}">
+                                                <a class="btn btn-danger custom-btn delete-image" data-id="{{ $image->id }}">
                                                     <i class="material-icons-two-tone text-danger">delete</i>
                                                 </a>
                                             </div>
@@ -61,6 +61,7 @@
                                     @endforeach
                                 </div>
                             @endif
+
 
 
                             <label>Short Description</label>
@@ -112,6 +113,36 @@
             height: 200
         });
 
+        $(document).ready(function() {
+            $('.delete-image').on('click', function(e) {
+                e.preventDefault();
+                var imageId = $(this).data('id');
+                var url = '{{ route("image.delete", ":id") }}';
+                url = url.replace(':id', imageId);
+
+                if(confirm('Are you sure you want to delete this image?')) {
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                        },
+                        success: function(response) {
+                            console.log(response); // Debug response
+                            $('#image-' + imageId).remove();
+                            alert(response.success);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText); // Log any error
+                            alert('Failed to delete image.');
+                        }
+                    });
+                }
+            });
+        });
+
+
+
         $('body').delegate('#changeCategory', 'change', function(e){
             var id = $(this).val();
 
@@ -131,5 +162,7 @@
                 }
             })
         });
+
+
     </script>
 @endsection
