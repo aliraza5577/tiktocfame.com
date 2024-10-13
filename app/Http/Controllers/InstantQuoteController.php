@@ -17,7 +17,6 @@ class InstantQuoteController extends Controller
     //instent_quote Save Data
     public function add(Request $request){
         $request->validate([
-            'product' => 'required',
             'quantity' => 'required|numeric',
             'name' => 'required|string',
             'phone' => 'required|string',
@@ -29,7 +28,6 @@ class InstantQuoteController extends Controller
         $save->name = $request->name;
         $save->phone  = $request->phone;
         $save->email = $request->email;
-        $save->product_name = $request->product;
         $save->quantity = $request->quantity;
         $save->message = $request->message;
         $save->save();

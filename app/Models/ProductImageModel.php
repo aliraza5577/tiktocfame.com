@@ -22,5 +22,6 @@ class ProductImageModel extends Model
     static public function getSingle($id){
         return self::find($id);
     }
-}
 
+
+}

@@ -49,7 +49,11 @@ class SubCategoryModel extends Model
 
     public function getProduct()
     {
-        return $this->hasMany(ProductModel::class, 'sub_category_id');
+        // return $this->hasMany(ProductModel::class, 'sub_category_id');
+        return $this->hasMany(ProductModel::class, 'sub_category_id')->where(function($query) {
+            $query->where('status', 0)->where('is_delete', 0);
+
+        });
     }
 
     public function category() {

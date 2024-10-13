@@ -81,12 +81,12 @@
                     <i class="material-icons has-sub-menu">keyboard_arrow_right</i>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="{{ url('admin/quote/instant') }}">Instant Quote</a>
-                    </li>
                     {{-- <li>
-                        <a href="{{ url('admin/quote/custom') }}">Custom Quote</a>
+                        <a href="{{ url('admin/quote/instant') }}">Instant Quote</a>
                     </li> --}}
+                    <li>
+                        <a href="{{ url('admin/quote/custom') }}">Custom Quote</a>
+                    </li>
                 </ul>
             </li>
             <li class="@if(Request::segment(2) =='users') active-page @endif">

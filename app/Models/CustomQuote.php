@@ -11,7 +11,12 @@ class CustomQuote extends Model
 
     protected $table = 'custom_quote';
 
-
+    static public function getRecord()
+    {
+        return self::select('custom_quote.*')
+                ->orderBy('custom_quote.id', 'desc')
+                ->paginate(20);
+    }
 
 
 

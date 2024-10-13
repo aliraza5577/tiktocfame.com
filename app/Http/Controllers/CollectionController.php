@@ -15,7 +15,10 @@ class CollectionController extends Controller
         $data['meta_keyword'] = 'All Collections';
         $data['meta_desc'] = 'All Collections';
         $data['seo_schema'] = 'All Collections';
-        $data['categories'] = CategoryModel::with('getSubCategory')->get();
+        $data['categories'] = CategoryModel::with('getSubCategory')
+        ->where('status', 0)
+        ->where('is_delete', 0)
+        ->get();
         return view('collection.collections', $data);
     }
 
@@ -28,7 +31,10 @@ class CollectionController extends Controller
         $data['meta_keyword'] = $category->meta_keyword;
         $data['meta_desc'] = $category->meta_desc;
         $data['seo_schema'] = $category->seo_schema;
-        $data['subcategories'] = SubCategoryModel::where('category_id', $category->id)->get();
+        $data['subcategories'] = SubCategoryModel::where('category_id', $category->id)
+        ->where('status', 0)
+        ->where('is_delete', 0)
+        ->get();
         return view('collection.singleCollection', $data);
     }
 
@@ -40,6 +46,8 @@ class CollectionController extends Controller
         $subcategory = SubCategoryModel::with('getProduct')
             ->where('slug', $subcategory_slug)
             ->where('category_id', $category->id)
+            ->where('status', 0)
+            ->where('is_delete', 0)
             ->firstOrFail();
 
         $data['meta_title'] = $subcategory->meta_title;
@@ -59,6 +67,14 @@ class CollectionController extends Controller
     {
         $product = ProductModel::where('slug', $product_slug)->with('getImage')->firstOrFail();
         $data['product'] = $product;
+
+        $relatedProducts = ProductModel::where('category_id', $product->category_id)
+                                   ->where('id', '!=', $product->id)
+                                   ->with(['getImage', 'sub_category'])
+                                   ->limit(4)
+                                   ->get();
+
+        $data['relatedProducts'] = $relatedProducts;
 
         $data['meta_title'] = $product->meta_title;
         $data['meta_keyword'] = $product->meta_keyword;

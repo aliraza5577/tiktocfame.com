@@ -89,9 +89,10 @@
 @section('script')
 <script>
     function viewQuoteDetails(id) {
+        var appUrl = "{{ url('/') }}";
         // Make an AJAX request to fetch the quote details
         $.ajax({
-            url: '/station/boxprintnew/admin/quote/instant/' + id, // The route that returns the quote details
+            url: appUrl+'/admin/quote/instant/' + id, // The route that returns the quote details
             type: 'GET',
             success: function(response) {
                 // Populate the modal with the fetched data
@@ -112,3 +113,4 @@
     }
 </script>
 @endsection
+

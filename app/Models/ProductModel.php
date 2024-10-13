@@ -44,4 +44,9 @@ class ProductModel extends Model
     public function getImage(){
         return $this->hasMany(ProductImageModel::class, 'product_id', 'id');
     }
+
+    public function sub_category()
+    {
+        return $this->belongsTo(SubCategoryModel::class, 'sub_category_id');
+    }
 }

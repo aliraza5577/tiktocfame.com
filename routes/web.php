@@ -16,6 +16,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CustomQuoteController;
 use App\Http\Controllers\InstantQuoteController;
+use App\Http\Controllers\ContactController;
 
 
 /*
@@ -39,6 +40,10 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('gallery', [HomeController::class, 'gallery']);
 Route::get('blog', [HomeController::class, 'blog']);
 Route::get('blog/{slug}', [HomeController::class, 'blog_post']);
+Route::get('privacy-policy', [HomeController::class, 'privacy']);
+Route::get('terms-and-condition', [HomeController::class, 'terms']);
+Route::get('about', [HomeController::class, 'about']);
+
 Route::get('all-collections', [CollectionController::class, 'all_collections']);
 Route::get('collection/{category_slug}', [CollectionController::class, 'collection']);
 Route::get('collection/{category_slug}/{subcategory_slug}', [CollectionController::class, 'sub_collection']);
@@ -46,6 +51,8 @@ Route::get('product/{product_slug}', [CollectionController::class, 'single_produ
 Route::post('instent_quote', [InstantQuoteController::class, 'add']);
 Route::post('custom_quote', [CustomQuoteController::class, 'add']);
 Route::get('search', [ProductController::class, 'searchProducts']);
+Route::get('contact', [HomeController::class, 'contact']);
+Route::post('contact', [ContactController::class, 'add']);
 
 
 
@@ -118,6 +125,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/quote/instant/{id}', [InstantQuoteController::class, 'getQuoteDetails']);
 
     Route::get('admin/quote/custom', [CustomQuoteController::class, 'index']);
+    Route::get('admin/quote/custom/{id}', [CustomQuoteController::class, 'getQuoteDetails']);
 
 
 

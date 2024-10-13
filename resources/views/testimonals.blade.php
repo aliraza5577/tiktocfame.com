@@ -24,7 +24,7 @@
                         <img src="{{ url('public/front/assets/img/reviews/star.ico') }}" alt="star" />
                         <img src="{{ url('public/front/assets/img/reviews/star.ico') }}" alt="star" />
                     </div>
-                    <p>I ordered gift boxes from BoxPrint for my business, and they are perfect! The boxes are durable and beautifully crafted. The custom designs added a personal touch that my clients love. Delivery was prompt, and the packaging was secure. I couldn’t be happier with my purchase!</p>
+                    <p>I ordered gift boxes from Citi Packaging for my business, and they are perfect! The boxes are durable and beautifully crafted. The custom designs added a personal touch that my clients love. Delivery was prompt, and the packaging was secure. I couldn’t be happier with my purchase!</p>
                     <div class="googleLogo row">
                         <div class="col-4"><img src="{{ url('public/front/assets/img/reviews/google.webp') }}" alt="google" /></div>
                         <div class="col-8">
@@ -53,7 +53,7 @@
                         <img src="{{ url('public/front/assets/img/reviews/star.ico') }}" alt="star" />
                         <img src="{{ url('public/front/assets/img/reviews/star.ico') }}" alt="star" />
                     </div>
-                    <p>BoxPrint’s custom stickers are amazing! The print quality is sharp, and the colors are vibrant. They stick well to various surfaces without peeling off. The design process was straightforward, and the final product exceeded my expectations. I’ll be coming back for more!</p>
+                    <p>Citi Packaging’s custom stickers are amazing! The print quality is sharp, and the colors are vibrant. They stick well to various surfaces without peeling off. The design process was straightforward, and the final product exceeded my expectations. I’ll be coming back for more!</p>
                     <div class="googleLogo row">
                         <div class="col-4"><img src="{{ url('public/front/assets/img/reviews/google.webp') }}" alt="google" /></div>
                         <div class="col-8">
@@ -82,7 +82,7 @@
                         <img src="{{ url('public/front/assets/img/reviews/star.ico') }}" alt="star" />
                         <img src="{{ url('public/front/assets/img/reviews/star.ico') }}" alt="star" />
                     </div>
-                    <p>The custom soap packaging from BoxPrint is fantastic! The boxes are sturdy and visually appealing. They fit my soaps perfectly and enhance their presentation. The customization process was seamless, and the final product looks great. I’m extremely satisfied with my purchase and will order again!</p>
+                    <p>The custom soap packaging from Citi Packaging is fantastic! The boxes are sturdy and visually appealing. They fit my soaps perfectly and enhance their presentation. The customization process was seamless, and the final product looks great. I’m extremely satisfied!</p>
                     <div class="googleLogo row">
                         <div class="col-4"><img src="{{ url('public/front/assets/img/reviews/google.webp') }}" alt="google" /></div>
                         <div class="col-8">
@@ -111,7 +111,7 @@
                         <img src="{{ url('public/front/assets/img/reviews/star.ico') }}" alt="star" />
                         <img src="{{ url('public/front/assets/img/reviews/star.ico') }}" alt="star" />
                     </div>
-                    <p>BoxPrint's cookie boxes are fantastic! The quality is top-notch, and my homemade cookies stay fresh and look professional. I appreciate the variety of sizes and the custom design options. Shipping was quick, and the customer service was excellent. I’ll definitely be ordering again!</p>
+                    <p>Citi Packaging's cookie boxes are fantastic! The quality is top-notch, and my homemade cookies stay fresh and look professional. I appreciate the variety of sizes and the custom design options. Shipping was quick, and the customer service was excellent. I’ll definitely be ordering again!</p>
                     <div class="googleLogo row">
                         <div class="col-4"><img src="{{ url('public/front/assets/img/reviews/google.webp') }}" alt="google" /></div>
                         <div class="col-8">

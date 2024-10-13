@@ -36,12 +36,19 @@ class CategoryModel extends Model
 
     public function getSubCategory()
     {
-        return $this->hasMany(SubCategoryModel::class, 'category_id');
+        return $this->hasMany(SubCategoryModel::class, 'category_id')->where(function($query) {
+            $query->where('is_delete', 0)
+                ->where('status', 0);
+        });
     }
+
 
     public static function getRecordMenu()
     {
-        return self::with('getSubCategory.getProduct')->get();
+        return self::with('getSubCategory.getProduct')
+                    ->where('category.is_delete', '=', 0)
+                    ->where('category.status', '=', 0)
+                    ->get();
     }
 
 

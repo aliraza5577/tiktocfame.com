@@ -55,6 +55,38 @@ class HomeController extends Controller
         return view('blog.post', $data);
     }
 
+    public function contact(){
+        $data['meta_title'] = 'Contact Us - Citi Packaging';
+        $data['meta_keyword'] = '';
+        $data['meta_desc'] = '';
+        $data['seo_schema'] = '';
+        return view('pages.contact', $data);
+    }
+
+    public function privacy(){
+        $data['meta_title'] = 'Privacy and Security - Citi Packaging';
+        $data['meta_keyword'] = '';
+        $data['meta_desc'] = '';
+        $data['seo_schema'] = '';
+        return view('pages.privacy', $data);
+    }
+
+    public function terms(){
+        $data['meta_title'] = 'Terms and Conditions - Citi Packaging';
+        $data['meta_keyword'] = '';
+        $data['meta_desc'] = '.';
+        $data['seo_schema'] = '';
+        return view('pages.terms', $data);
+    }
+
+    public function about(){
+        $data['meta_title'] = 'About Us - Citi Packaging';
+        $data['meta_keyword'] = '';
+        $data['meta_desc'] = '.';
+        $data['seo_schema'] = '';
+        return view('pages.about_us', $data);
+    }
+
 
 
 
