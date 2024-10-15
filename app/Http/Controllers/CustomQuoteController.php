@@ -36,8 +36,8 @@ class CustomQuoteController extends Controller
         request()->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required|email',
-            'image' => 'max:2048'
+            'email' => 'required|email'
+            // 'image' => 'max:2048'
         ]);
 
         $image = $request->file('image');
