@@ -7,8 +7,8 @@
     <div class="container">
         <div class="header p20 text-center">
             <h1>Contact us</h1>
-            <p>At Citi Packaging, we provide quality packaging solutions, transparency in information, and outstanding service to all of our clients. If you have a question, require a quote for a custom project, or need expert advice, we are here to help!</p>
-            <p>Fill out our quote request form, and one of our packaging experts will contact you within 1 hour. We want to make your custom packaging experience as easy as possible.</p>
+            {{-- <p>At Citi Packaging, we provide quality packaging solutions, transparency in information, and outstanding service to all of our clients. If you have a question, require a quote for a custom project, or need expert advice, we are here to help!</p> --}}
+            {{-- <p>Fill out our quote request form, and one of our packaging experts will contact you within 1 hour. We want to make your custom packaging experience as easy as possible.</p> --}}
         </div>
         <div class="row contactPageWrap text-left">
 
@@ -16,10 +16,10 @@
                 {{-- Contact Information --}}
                 <div class="footerContactArea">
                     <h2 class="pb20">How We Help You</h2>
-                    <p>Our packaging experts are available at every stage-from the first meeting to design and customization, all the way through to production and on-time delivery. We make sure that you have smooth and easy solutions to your packaging requirements.</p>
+                    {{-- <p>Our experts are available at every stage-from the first meeting to design and customization, all the way through to production and on-time delivery. We make sure that you have smooth and easy solutions to your packaging requirements.</p> --}}
                     <h3>Need Help Now?</h3>
-                    <p>For immediate assistance, reach out to us directly: <a href="mailto:sales@citipackaging.com">sales@citipackaging.com</a> or call us at <a href="tel:+13237639393">+1 (323) 763-9393</a> to speak with one of our representatives today.</p>
-                    <p>At Citi Packaging, we’re always here to answer your questions and provide the perfect packaging solutions for your business.</p>
+                    <p>For immediate assistance, reach out to us directly: <a href="mailto:sales@domain.com">sales@domain.com</a> or call us at <a href="tel:+13237639393">+1 (323) 763-9393</a> to speak with one of our representatives today.</p>
+                    <p>At TikToc Fame, we’re always here to answer your questions and provide the perfect packaging solutions for your business.</p>
 
                     {{-- <div class="row text-center">
                         <div class="col-12">
@@ -48,9 +48,9 @@
                 {{-- Social Links --}}
                 <div class="social-links">
                     <ul>
-                        <li><a href="https://www.pinterest.com/citipackaging/"><i class="fab fa-pinterest-p"></i></a></li>
-                        <li><a href="https://www.youtube.com/@citipackaging"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://x.com/citipackaging"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                     </ul>
                 </div>
 
@@ -101,16 +101,6 @@
                     <div id="error-message" style="color: red;"></div>
             </div>
             </div>
-
-
-
-
-
-            {{-- Map --}}
-            <div class="mapArea pt50" style="width:100%;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.8502939951904!2d-118.25214002518568!3d34.04771111797109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c64af7e07b07%3A0x1a925f7cb451d9bb!2s453%20S%20Spring%20St%20400%20544%2C%20Los%20Angeles%2C%20CA%2090013!5e0!3m2!1sen!2sus!4v1728585884839!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
 
         </div>
     </div>

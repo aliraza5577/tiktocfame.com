@@ -26,6 +26,7 @@ class HomeController extends Controller
 
     // Blog
     public function blog(){
+        $data['getSubCategories'] = SubCategoryModel::getActiveRecord();
         $data['meta_title'] = 'Latest Trends and News About TikTok';
         $data['meta_keyword'] = '';
         $data['meta_desc'] = 'Here you will get an updates on all the latest trends and insights about the TikTok across the world.';
@@ -37,6 +38,7 @@ class HomeController extends Controller
 
     // Blog Post
     public function blog_post($slug){
+        $data['getSubCategories'] = SubCategoryModel::getActiveRecord();
         $blog = BlogModel::where('slug', $slug)->firstOrFail();
         $data['blog'] = $blog;
         $data['meta_title'] = $blog->meta_title;
@@ -47,6 +49,7 @@ class HomeController extends Controller
     }
 
     public function contact(){
+        $data['getSubCategories'] = SubCategoryModel::getActiveRecord();
         $data['meta_title'] = 'Contact Us | Reach Out for Custom Quries';
         $data['meta_keyword'] = '';
         $data['meta_desc'] = 'Have questions or need custom packages? Contact our expert team for tailored support and quick responses. We are here to help your brand stand out!';
