@@ -1,6 +1,6 @@
 <div class="app-sidebar">
     <div class="logo">
-        <a href="{{ url('/') }}" class="logo-icon"><span class="logo-text">Citi Packaging</span></a>
+        <a href="{{ url('/') }}" class="logo-icon"><span class="logo-text">TikTok Fame</span></a>
         <div class="sidebar-user-switcher user-activity-online">
             <a href="#">
                 {{-- <img src="{{ url('public/front/assets/img/logo.svg') }}">

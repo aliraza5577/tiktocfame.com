@@ -10,15 +10,15 @@ use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BlogController;
 
-
 // Frontend Controllers
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CustomQuoteController;
 use App\Http\Controllers\InstantQuoteController;
 use App\Http\Controllers\ContactController;
-
-
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\SocialMediaController;
+use App\Http\Controllers\StripeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,33 +33,6 @@ use App\Http\Controllers\ContactController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-
-// FrontEnd Routes
-Route::get('/', [HomeController::class, 'index']);
-Route::get('gallery', [HomeController::class, 'gallery']);
-Route::get('blog', [HomeController::class, 'blog']);
-Route::get('blog/{slug}', [HomeController::class, 'blog_post']);
-Route::get('privacy-policy', [HomeController::class, 'privacy']);
-Route::get('terms-and-condition', [HomeController::class, 'terms']);
-Route::get('about', [HomeController::class, 'about']);
-
-Route::get('all-collections', [CollectionController::class, 'all_collections']);
-Route::get('collection/{category_slug}', [CollectionController::class, 'collection']);
-Route::get('collection/{category_slug}/{subcategory_slug}', [CollectionController::class, 'sub_collection']);
-Route::get('product/{product_slug}', [CollectionController::class, 'single_product']);
-Route::post('instent_quote', [InstantQuoteController::class, 'add']);
-Route::post('custom_quote', [CustomQuoteController::class, 'add']);
-Route::get('search', [ProductController::class, 'searchProducts']);
-Route::get('contact', [HomeController::class, 'contact']);
-Route::post('contact', [ContactController::class, 'add']);
-
-
-
-
-
-
-
 
 // Backend Routes
 // Auth Routes
@@ -127,8 +100,63 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/quote/custom', [CustomQuoteController::class, 'index']);
     Route::get('admin/quote/custom/{id}', [CustomQuoteController::class, 'getQuoteDetails']);
 
-
-
 });
+
+
+
+
+
+
+
+// FrontEnd Routes
+Route::get('/', [HomeController::class, 'index']);
+Route::get('blog', [HomeController::class, 'blog']);
+Route::get('blog/{slug}', [HomeController::class, 'blog_post']);
+Route::get('privacy-policy', [HomeController::class, 'privacy']);
+Route::get('terms-and-condition', [HomeController::class, 'terms']);
+
+
+// Route::get('product/{product_slug}', [CollectionController::class, 'single_product']);
+Route::post('instent_quote', [InstantQuoteController::class, 'add']);
+Route::post('custom_quote', [CustomQuoteController::class, 'add']);
+Route::get('search', [ProductController::class, 'searchProducts']);
+Route::get('contact', [HomeController::class, 'contact']);
+Route::post('contact', [ContactController::class, 'add']);
+
+// Collection Urls
+// Route::get('all-collections', [CollectionController::class, 'all_collections']);
+// Route::get('{category_slug}', [CollectionController::class, 'collection'])
+//      ->where('category_slug', '[a-z0-9\-]+');
+
+Route::get('{subcategory_slug}', [CollectionController::class, 'sub_collection'])
+     ->where(['category_slug' => '[a-z0-9\-]+', 'subcategory_slug' => '[a-z0-9\-]+']);
+
+Route::get('/checkout/{id}', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+
+
+Route::get('/social-media/tiktok-blade/{username}', [App\Http\Controllers\SocialMediaController::class, 'getTiktokUserBlade']);
+
+// Route::get('/social-media/tiktok/{username}', [SocialMediaController::class, 'getTiktokUserData']);
+Route::post('/store-product-session', function(Illuminate\Http\Request $request) {
+    $product = \App\Models\ProductModel::find($request->input('product_id'));
+    session(['product' => $product]);
+    return response()->json(['success' => true]);
+})->name('store.product.session');
+// Add this route to store the checkout email in session
+Route::post('/store-checkout-email', function(Illuminate\Http\Request $request) {
+    $request->validate([
+        'email' => 'required|email'
+    ]);
+
+    session(['checkout_email' => $request->email]);
+
+    return response()->json(['success' => true]);
+})->name('store.checkout.email');
+Route::post('/stripe/payment', [App\Http\Controllers\StripeController::class, 'processPayment'])->name('stripe.payment');
+Route::get('/payment/success/{order?}', [StripeController::class, 'success'])->name('payment.success');
+Route::get('/payment/cancel', [App\Http\Controllers\StripeController::class, 'cancel'])->name('payment.cancel');
+// Add this route to your web.php file
+Route::get('/get-product-details/{id}', 'App\Http\Controllers\CheckoutController@getProductDetails')->name('get.product.details');
 
 

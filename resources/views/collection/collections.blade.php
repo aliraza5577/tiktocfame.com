@@ -16,7 +16,7 @@
                         @if($category->getSubCategory->count() > 0)
                             @foreach ($category->getSubCategory as $collection)
                                 <div class="col-6 col-md-3 col-lg-3 card-single">
-                                    <a href="{{ url('collection/'.$category->slug.'/'.$collection->slug) }}">
+                                    <a href="{{ url($category->slug.'/'.$collection->slug) }}">
                                         <img src="{{ url('public/upload/subCategory/'.$collection->featured_image) }}" width="270" height="270" alt="{{ $collection->name }}" />
                                         <h3>{{ $collection->name }}</h3>
                                     </a>

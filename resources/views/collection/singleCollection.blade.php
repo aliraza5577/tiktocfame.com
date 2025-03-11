@@ -25,7 +25,7 @@
                     <div class="row">
                             @foreach ($subcategories as $collection)
                                 <div class="col-6 col-md-3 col-lg-3 card-single">
-                                    <a href="{{ url('collection/'.$category->slug.'/'.$collection->slug) }}">
+                                    <a href="{{ url($category->slug.'/'.$collection->slug) }}">
                                         <img src="{{ url('public/upload/subCategory/'.$collection->featured_image) }}" alt="{{ $collection->name }}" />
                                         <h3>{{ $collection->name }}</h3>
                                     </a>

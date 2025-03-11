@@ -24,13 +24,13 @@
                             <input type="text" value="{{ old('slug') }}" name="slug" class="form-control form-control-rounded m-b-sm" placeholder="Enter Slug">
                             <div style="color: red;">{{ $errors->first('slug') }}</div>
 
-                            <label>Featured Image</label>
+                            {{-- <label>Featured Image</label>
                             <input type="file" name="featured_image" accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Image">
                             <div style="color: red;">{{ $errors->first('featured_image') }}</div>
 
                             <label>Banner Image</label>
                             <input type="file" name="banner_image" accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Image">
-                            <div style="color: red;">{{ $errors->first('banner_image') }}</div>
+                            <div style="color: red;">{{ $errors->first('banner_image') }}</div> --}}
 
 
                             <label>Status</label>

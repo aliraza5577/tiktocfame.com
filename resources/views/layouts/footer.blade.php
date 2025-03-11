@@ -5,14 +5,14 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="widget address-widget">
-                        <h4 class="widget-title">Our Address</h4>
+                        <span class="widget-title">Our Address</span>
                         <p>453 S Spring St Ste 400 # 544<br> Los Angeles ,CA 90013</p>
-                        <p><a href="tel:+13237639393">+1 (323) 763-9393</a> <br><a href="mailto:sales@citipackaging.com"> sales@citipackaging.com</a></p>
+                        <p><a href="tel:+13237639393">+1 (323) 763-9393</a> <br><a href="mailto:sales@domain.com"> sales@domain.com</a></p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="widget nav-widget">
-                        <h4 class="widget-title">Quick Links</h4>
+                        <span class="widget-title">Quick Links</span>
                         <ul>
                             <li><a href="{{ url('') }}">Home</a></li>
                             <li><a href="{{ url('about') }}">About Us</a></li>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="widget nav-widget">
-                        <h4 class="widget-title">Categories</h4>
+                        <span class="widget-title">Categories</span>
                         <ul>
                             @php
                                 $getCategories = App\Models\SubCategoryModel::getActiveRecord();
@@ -33,7 +33,7 @@
                             @foreach ($getCategories as $mainCat)
                                 @if ($count<5)
                                     @php $count++; @endphp
-                                    <li><a href="{{ url('collection/'.$mainCat->category->slug.'/'.$mainCat->slug) }}">{{$mainCat->name}}</a></li>
+                                    <li><a href="{{ url($mainCat->category->slug.'/'.$mainCat->slug) }}">{{$mainCat->name}}</a></li>
                                 @endif
                             @endforeach
                         </ul>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="widget nav-widget">
-                        <h4 class="widget-title">Helpful Links</h4>
+                        <span class="widget-title">Helpful Links</span>
                         <ul>
                             <li><a href="{{ url('about') }}">About Us</a></li>
                             <li><a href="{{ url('contact') }}">Contact Us</a></li>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="copyright-text text-lg-right">
-                        <p><span>Copyright</span> - 2024 All Rights Reserved.</p>
+                        <p><span>Copyright</span> - 2025 All Rights Reserved.</p>
                     </div>
                 </div>
             </div>

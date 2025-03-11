@@ -35,9 +35,10 @@ class ProductController extends Controller
             'slug' => 'required|unique:products',
             'category_id' => 'required',
             'sub_category_id' => 'required',
-            'image.*' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:2048',
+            'actual_price' => 'required|integer',
             'meta_title' => 'required',
         ]);
+
 
         $slug  = $request->slug;
         $slug = Str::slug($slug);
@@ -50,8 +51,8 @@ class ProductController extends Controller
         $product->sub_category_id = $request->sub_category_id;
         $product->short_description = $request->short_description;
         $product->description = $request->description;
-        $product->additional_info = $request->additional_info;
-        $product->shipping = $request->shipping;
+        $product->actual_price = $request->actual_price;
+        $product->sale_price = $request->sale_price;
         $product->status = $request->status;
         $product->meta_title = $request->meta_title;
         $product->meta_keyword = $request->meta_keyword;
@@ -59,22 +60,22 @@ class ProductController extends Controller
         $product->created_by = Auth::user()->id;
         $product->save();
 
-        if(!empty($request->file('image'))){
-            foreach($request->file('image') as $value){
-                if($value->isValid()){
-                    $ext = $value->getClientOriginalExtension();
-                    $randomStr = date('Ymdhis').Str::random(10);
-                    $filename = strtolower($randomStr).'.'.$ext;
-                    $value->move('public/upload/products', $filename);
+        // if(!empty($request->file('image'))){
+        //     foreach($request->file('image') as $value){
+        //         if($value->isValid()){
+        //             $ext = $value->getClientOriginalExtension();
+        //             $randomStr = date('Ymdhis').Str::random(10);
+        //             $filename = strtolower($randomStr).'.'.$ext;
+        //             $value->move('public/upload/products', $filename);
 
-                    $imageUpload = new ProductImageModel;
-                    $imageUpload->image_name = $filename;
-                    $imageUpload->image_ext = $ext;
-                    $imageUpload->product_id = $product->id;
-                    $imageUpload->save();
-                }
-            }
-        }
+        //             $imageUpload = new ProductImageModel;
+        //             $imageUpload->image_name = $filename;
+        //             $imageUpload->image_ext = $ext;
+        //             $imageUpload->product_id = $product->id;
+        //             $imageUpload->save();
+        //         }
+        //     }
+        // }
 
         return redirect('admin/product')->with('success', 'Product Added Succesfully.');
     }
@@ -94,7 +95,7 @@ class ProductController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'sub_category_id' => 'required',
-            'image.*' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:2048',
+            'actual_price' => 'required|integer',
             'meta_title' => 'required',
             'slug' => 'required|unique:products,slug,'.$id
         ]);
@@ -109,30 +110,30 @@ class ProductController extends Controller
         $product->sub_category_id = $request->sub_category_id;
         $product->short_description = $request->short_description;
         $product->description = $request->description;
-        $product->additional_info = $request->additional_info;
-        $product->shipping = $request->shipping;
+        $product->actual_price = $request->actual_price;
+        $product->sale_price = $request->sale_price;
         $product->status = $request->status;
         $product->meta_title = $request->meta_title;
         $product->meta_keyword = $request->meta_keyword;
         $product->meta_desc = $request->meta_desc;
         $product->save();
 
-        if(!empty($request->file('image'))){
-            foreach($request->file('image') as $value){
-                if($value->isValid()){
-                    $ext = $value->getClientOriginalExtension();
-                    $randomStr = date('Ymdhis').Str::random(10);
-                    $filename = strtolower($randomStr).'.'.$ext;
-                    $value->move('public/upload/products', $filename);
+        // if(!empty($request->file('image'))){
+        //     foreach($request->file('image') as $value){
+        //         if($value->isValid()){
+        //             $ext = $value->getClientOriginalExtension();
+        //             $randomStr = date('Ymdhis').Str::random(10);
+        //             $filename = strtolower($randomStr).'.'.$ext;
+        //             $value->move('public/upload/products', $filename);
 
-                    $imageUpload = new ProductImageModel;
-                    $imageUpload->image_name = $filename;
-                    $imageUpload->image_ext = $ext;
-                    $imageUpload->product_id = $product->id;
-                    $imageUpload->save();
-                }
-            }
-        }
+        //             $imageUpload = new ProductImageModel;
+        //             $imageUpload->image_name = $filename;
+        //             $imageUpload->image_ext = $ext;
+        //             $imageUpload->product_id = $product->id;
+        //             $imageUpload->save();
+        //         }
+        //     }
+        // }
 
         return redirect('admin/product')->with('success', 'Product Updated Succesfully.');
     }
@@ -182,6 +183,8 @@ class ProductController extends Controller
         $query = $request->input('query');
         $data['products'] = ProductModel::where('name', 'LIKE', "%{$query}%")
                     ->orWhere('description', 'LIKE', "%{$query}%")
+                    ->where('status', 0)
+                    ->where('is_delete', 0)
                     ->get();
 
         return view('search_results', $data);

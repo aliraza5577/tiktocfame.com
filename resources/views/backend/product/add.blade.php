@@ -32,6 +32,7 @@
                             <div style="color: red;">{{ $errors->first('slug') }}</div>
                             <label>Category</label>
                             <select name="category_id" id="changeCategory" class="form-select form-control form-control-rounded m-b-sm">
+                                <option>Select Category</option>
                                 @foreach ($getCategory as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
@@ -42,9 +43,9 @@
                                     <option value="">Select</option>
                             </select>
                             <div style="color: red;">{{ $errors->first('sub_category_id') }}</div>
-                            <label>Images</label>
+                            {{-- <label>Images</label>
                             <input type="file" name="image[]" multiple accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Images">
-                            <div style="color: red;">{{ $errors->first('image') }}</div>
+                            <div style="color: red;">{{ $errors->first('image') }}</div> --}}
 
                             <label>Short Description</label>
                             <textarea name="short_description" style="width: 100%;height: 150px;"> {{ old('short_description') }}</textarea>
@@ -53,15 +54,10 @@
                             <label>Description</label>
                             <textarea class="editor" name="description" style="width: 100%;height: 150px;"> {{ old('description') }}</textarea>
                             <br />
-                            <br />
-                            <label>Specifications</label>
-                            <textarea class="editor" name="additional_info" style="width: 100%;height: 150px;"> {{ old('additional_info') }}</textarea>
-                            <br />
-                            <br />
-                            <label>Shipping & Returns</label>
-                            <textarea class="editor" name="shipping" style="width: 100%;height: 150px;"> {{ old('shipping') }}</textarea>
-                            <br />
-                            <br />
+                            <label>Actual Price</label>
+                            <input type="text" value="{{ old('actual_price') }}" name="actual_price" class="form-control form-control-rounded m-b-sm" placeholder="Enter Actual Price">
+                            <label>Sale Price</label>
+                            <input type="text" value="{{ old('sale_price') }}" name="sale_price" class="form-control form-control-rounded m-b-sm" placeholder="Enter Sale Price">
                             <label>Status</label>
                             <select name="status" class="form-select form-control form-control-rounded m-b-sm">
                                 <option {{ (old('status') == 0) ? 'selected' : '' }} value="0">Active</option>

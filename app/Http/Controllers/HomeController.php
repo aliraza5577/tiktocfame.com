@@ -11,34 +11,25 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     //HomePage
-    public function index(){
-        $data['meta_title'] = 'Home - Citi Packaging';
+    public function index() {
+        $data['meta_title'] = 'Home';
         $data['meta_keyword'] = 'Home';
         $data['meta_desc'] = 'Home';
         $data['seo_schema'] = 'Home';
-        $data['getRecord'] = CategoryModel::getRecord();
         $data['getSubCategories'] = SubCategoryModel::getActiveRecord();
-        $data['top_products'] = ProductModel::getActiveRecord('desc');
-        $data['seasonal_products'] = ProductModel::getActiveRecord('asc');
+        foreach ($data['getSubCategories'] as $subcategory) {
+            $subcategory->products = ProductModel::where('sub_category_id', $subcategory->id)->get();
+        }
         return view('home', $data);
     }
 
 
-    //Gallery
-    public function gallery(){
-        $data['meta_title'] = 'Gallery - Citi Packaging';
-        $data['meta_keyword'] = 'Gallery';
-        $data['meta_desc'] = 'Gallery';
-        $data['seo_schema'] = 'Gallery';
-        return view('gallary', $data);
-    }
-
     // Blog
     public function blog(){
-        $data['meta_title'] = 'Blog - Citi Packaging';
-        $data['meta_keyword'] = 'Blog';
-        $data['meta_desc'] = 'Blog';
-        $data['seo_schema'] = 'Blog';
+        $data['meta_title'] = 'Latest Trends and News About TikTok';
+        $data['meta_keyword'] = '';
+        $data['meta_desc'] = 'Here you will get an updates on all the latest trends and insights about the TikTok across the world.';
+        $data['seo_schema'] = '';
         $data['getRecord'] = BlogModel::getRecordActive();
         return view('blog.index', $data);
     }
@@ -56,37 +47,28 @@ class HomeController extends Controller
     }
 
     public function contact(){
-        $data['meta_title'] = 'Contact Us - Citi Packaging';
+        $data['meta_title'] = 'Contact Us | Reach Out for Custom Quries';
         $data['meta_keyword'] = '';
-        $data['meta_desc'] = '';
+        $data['meta_desc'] = 'Have questions or need custom packages? Contact our expert team for tailored support and quick responses. We are here to help your brand stand out!';
         $data['seo_schema'] = '';
         return view('pages.contact', $data);
     }
 
     public function privacy(){
-        $data['meta_title'] = 'Privacy and Security - Citi Packaging';
+        $data['meta_title'] = 'Privacy and Security | TikTok Fame';
         $data['meta_keyword'] = '';
-        $data['meta_desc'] = '';
+        $data['meta_desc'] = '#';
         $data['seo_schema'] = '';
         return view('pages.privacy', $data);
     }
 
     public function terms(){
-        $data['meta_title'] = 'Terms and Conditions - Citi Packaging';
+        $data['meta_title'] = 'Terms and Conditions | TikTok Fame';
         $data['meta_keyword'] = '';
-        $data['meta_desc'] = '.';
+        $data['meta_desc'] = 'TikTok Fame.com reserves the right to make changes to this Site and to these Terms and Conditions at any time without prior notice.';
         $data['seo_schema'] = '';
         return view('pages.terms', $data);
     }
-
-    public function about(){
-        $data['meta_title'] = 'About Us - Citi Packaging';
-        $data['meta_keyword'] = '';
-        $data['meta_desc'] = '.';
-        $data['seo_schema'] = '';
-        return view('pages.about_us', $data);
-    }
-
 
 
 

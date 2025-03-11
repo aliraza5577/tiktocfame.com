@@ -6,8 +6,12 @@
     <section class="product-details p50">
         <div class="container">
             <div class="breadcrums">
-                <p><a href="{{ url('') }}">Home</a><span> > </span>{{ $product->name }}</p>
+                <p><a href="{{ url('') }}">Home</a><span> > </span>
+                    <a href="{{ url($parentCategorySlug.'/'.$product->sub_category->slug ) }}">{{ $product->sub_category->name }}</a>
+                    <span> > </span>{{ $product->name }}
+                </p>
             </div>
+
             <h1>{{ $product->name }}</h1>
             <div class="row">
                 <!-- Product Left Side -->

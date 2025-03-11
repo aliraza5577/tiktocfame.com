@@ -2,34 +2,24 @@
 
 
     @section('content')
-    <!--====== Banner Area Start ======-->
-    <section class="banner-section">
-        <div id="bannerSlider" class="banner-slider carousel slide" data-bs-ride="carousel">
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <a data-bs-toggle="modal" data-bs-target="#quoteModal">
-                        <img src="{{ url('public/front/assets/img/banners/home-banner.avif') }}">
-                    </a>
+
+    <section class="banner-section p50">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <h1>Buy TikTok Followers, Likes and Views – Starting at Just $1.48!</h1>
+                    <p>TikTocFame offers real TikTok Followers, Likes, Views and Comments that help you build credibility, boost engagements and enhance your social media success.</p>
+                    <div class="trust-pilot-area">
+                        <img src="{{ url('public/front/assets/img/stars.svg') }}" alt="stars">
+                        <p>4.8 | Rated Excellent on Trustpilot</p>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <a data-bs-toggle="modal" data-bs-target="#quoteModal">
-                        <img src="{{ url('public/front/assets/img/banners/home-page-banner.avif') }}">
-                    </a>
+                <div class="col-6 text-right">
+                   <img src="{{ url('public/front/assets/img/banner_home.webp') }}" alt="banner" />
                 </div>
             </div>
-
-            <!-- Left and right controls -->
-            {{-- <a class="carousel-control-prev" href="#bannerSlider" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#bannerSlider" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a> --}}
-
         </div>
     </section>
-    <!--====== Banner Area End ======-->
 
 
 
@@ -37,108 +27,56 @@
     <!--====== Categories Section Start ======-->
     <section class="category-wrap p50">
         <div class="container">
-            <div class="header p50 pl0">
-                <h1>Your Trusted Custom Packaging Partner</h1>
-                <p>We pay attention to offering you the best packaging solutions fit for your industries and products. With custom boxes featuring logos, your brand will catch attention and be remembered. Through smooth and flexible packaging, we make it easy for you to receive the high-quality custom boxes your business needs-delivered carefully and accurately.</p>
+            <div class="header p20">
+                <h1>Our Services</h1>
+                {{-- <p>TikTokFame is a premier service provider catering to the needs of TikTok users seeking to enhance their online presence. By selling TikTok followers, likes, and views, TikTokFame offers a comprehensive platform for users to increase their visibility and reach on this popular social media network. The service boasts of genuine followers and real likes, which help users to gain credibility and popularity. The TikTok views offered by the service are from real accounts, contributing to a natural growth pattern. In essence, TikTokFame provides a reliable avenue for TikTok enthusiasts to optimize their content and gain a competitive edge in the vast digital landscape.</p> --}}
             </div>
-            <div class="row">
-                @php
-                    $count = 0;
-                @endphp
-                @foreach ($getSubCategories as $collection)
-                    @if ($count<12)
-                        <div class="col-6 col-md-3 col-lg-3 card-single">
-                            <a href="{{ url('collection/'.$collection->category->slug.'/'.$collection->slug) }}">
-                                <img src="{{ url('public/upload/subCategory/'.$collection->featured_image) }}" width="270" height="270" alt="{{ $collection->name }}" />
-                                <h3>{{ $collection->name }}</h3>
-                            </a>
-                        </div>
-                        @php
-                            $count++;
-                        @endphp
-                    @endif
-                @endforeach
-            </div>
-            <div class="p50">
-                <a class="main-btn" href="{{ url('all-collections') }}">View More Collections</a>
+            <div class="row pt-3">
+                <div class="col-12">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        @foreach ($getSubCategories as $key => $collection)
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link {{ $key == 0 ? 'active' : '' }}"
+                                    id="{{ $collection->slug }}-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#{{ $collection->slug }}"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="{{ $collection->slug }}"
+                                    aria-selected="{{ $key == 0 ? 'true' : 'false' }}">
+                                    {{ $collection->name }}
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        @foreach ($getSubCategories as $key => $collection)
+                            <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
+                                id="{{ $collection->slug }}"
+                                role="tabpanel"
+                                aria-labelledby="{{ $collection->slug }}-tab">
+                                @if ($collection->products->count() > 0)
+                                    @foreach ($collection->products as $product)
+                                        <div class="card-single">
+                                            <h3>{{ $product->name }}</h3>
+                                            <p>${{ $product->sale_price }}</p>
+                                            <a href="{{ url('checkout/'.$product->id) }}">Buy Now</a>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <p>No Package available.</p>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     <!--====== Categories Section End ======-->
 
-
-    <!--====== Top products Section ======-->
-    <section class="productsWrap text-center pb50">
-        <div class="container">
-            <div class="header pb50 pl0">
-                <h2>Citi Packaging Picks: Top Products</h2>
-            </div>
-            <div class="row">
-                @php
-                    $count = 0;
-                @endphp
-                @foreach ($top_products as $product)
-                    @if ($count<4)
-                        <div class="col-6 col-md-3 col-lg-3 card-single">
-                            <a href="{{ url('product/'.$product->slug) }}">
-                            @if($product->getImage->first())
-                                <img src="{{ $product->getImage->first()->getProductImage() }}" width="270" height="270" alt="{{ $product->name }}" />
-                            @else
-                                <img src="{{ url('public/front/assets/img/products/01.jpg') }}" width="270" height="270" alt="{{ $product->name }}" />
-                            @endif
-                                <h3>{{ $product->name }}</h3>
-                            </a>
-                        </div>
-                        @php
-                            $count++;
-                        @endphp
-                    @endif
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <!--====== Top products Section End ======-->
-
-
-
-    <!--====== Seasonal products Section ======-->
-    <section class="productsWrap text-center pb50">
-        <div class="container">
-            <div class="header pb50 pl0">
-                <h2>Everything you need to make busy season a breeze</h2>
-            </div>
-            <div class="row">
-                @php
-                    $count = 0;
-                @endphp
-                @foreach ($seasonal_products as $product)
-                    @if ($count<4)
-                        <div class="col-6 col-md-3 col-lg-3 card-single">
-                            <a href="{{ url('product/'.$product->slug) }}">
-                            @if($product->getImage->first())
-                                <img src="{{ $product->getImage->first()->getProductImage() }}" width="270" height="270" alt="{{ $product->name }}" />
-                            @else
-                                <img src="{{ url('public/front/assets/img/products/01.jpg') }}" width="270" height="270" alt="{{ $product->name }}" />
-                            @endif
-                                <h3>{{ $product->name }}</h3>
-                            </a>
-                        </div>
-                        @php
-                            $count++;
-                        @endphp
-                    @endif
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <!--====== Seasonal products Section End ======-->
-
-
-
-
-
-
-
+    <!--====== Services Section Start ======-->
+    @include('homeServices')
 
     <!--====== Features Section Start ======-->
     @include('features')
@@ -149,64 +87,36 @@
     <section class="whyChooseUs-wrap features-wrap text-center p50">
         <div class="container">
             <div class="header p50 pl0">
-                <h2>Why Choose <span class="primaryColor">Citi Packaging?</span></h2>
-                <p>Reach Your Business Goals with Our Exceptional Packaging Services</p>
+                <h2>What You <span class="primaryColor">Need to Know?</span></h2>
+                <p>Are you ready to experience the ultimate in TikTok growth! We are committed to delivering only the Top-notch TikTok services on the market. Your page and videos are in the most trusted hands as we offer the best products available. With us, your TikTok presence is safe and secure for incredible growth. Prepare to see your profile flourish!</p>
             </div>
             <div class="row gx-4">
                 <div class="col-md-3">
                     <div class="card-single">
                         <i class='far fa-shapes fa-3x'></i>
-                        <h3>Customized to Perfection</h3>
-                        <p>At Citi Packaging, your vision takes the lead. You have complete freedom to customize the size, shape, and style of your packaging, ensuring it fits your product perfectly.</p>
+                        <h3>Outstanding Quality</h3>
+                        <p>Take the spotlight with TikTocFame, your ideal destination to boost your TikTok presence. We promise exceptional quality with every service we provide. Whether it’s followers or likes, our offers will help your content stand out and shine brighter than ever before. With us, your TikTok account gets the premium engagement it deserves!</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card-single">
-                    <i class='far fa-tree fa-3x'></i>
-                    <h3>Sustainability</h3>
-                    <p>We provide eco-friendly, sustainable packaging made from good-quality, recyclable materials. This way, you can help the environment while improving your products.</p>
+                    <i class='fas fa-money-bill fa-3x'></i>
+                    <h3>Exceptional Prices</h3>
+                    <p>Quality doesn’t have to come with a hefty price tag. We believe that top-notch TikTok services should be affordable for everyone. Our competitive prices offer unbeatable value while maintaining the highest standards in quality. Get the best bang for your buck and watch your TikTok profile rise to new heights!</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card-single">
                         <i class="far fa-print fa-3x"></i>
-                        <h3>High-Quality Printing</h3>
-                        <p>With our modern digital and offset printing technology, your designs will be injected to life in bright colors and clear details, making your packaging different from the rest.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-single">
-                        <i class="far fa-clipboard-check fa-3x"></i>
-                        <h3>Endless Finishing Options</h3>
-                        <p>From glossy coatings to luxurious matte or metallic finishes, our selection of premium finishing touches can make your packaging truly stand out from market.</p>
+                        <h3>Safe And Secured</h3>
+                        <p>We take your safety seriously. By maintaining TikTok guidelines we offer safe and secure TikTok services that allow your account to grow untroubled. Your personal information is always protected and we prioritize your account’s security at every step. </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card-single">
                         <i class="far fa-truck fa-3x"></i>
-                        <h3>Free & Fast Delivery</h3>
-                        <p>No delivery fees! We make sure to deliver quickly and for free to your home, so you get your packages right when you need them.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-single">
-                        <i class="far fa-headset fa-3x"></i>
-                        <h3>Free Design Support</h3>
-                        <p>Make your ideas real with our skilled design team. If you dream it, we will make it—without extra charges. Your packaging ideas are very important to us.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-single">
-                        <i class="far fa-user-check fa-3x"></i>
-                        <h3>Satisfaction Guaranteed</h3>
-                        <p>Your satisfaction is our top priority! Our dedicated support team is available around the clock to assist you. Questions? We’re just a message away.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-single">
-                        <i class='fas fa-money-bill fa-3x'></i>
-                        <h3>Competitive Pricing</h3>
-                        <p>Get affordable custom packaging without losing quality. Our pricing ensures you can scale your business without breaking the bank.</p>
+                        <h3>Instant Delivery</h3>
+                        <p>Experience the thrill of instant growth! Our lightning delivery ensures that your followers and likes arrive in real time, providing an immediate boost to your TikTok profile. No delays, no waiting—just quick, tangible results that make a difference. Get ready for real-time success with TikTocFame!</p>
                     </div>
                 </div>
             </div>
@@ -219,15 +129,12 @@
     <!--====== Testimonial Start ======-->
     @include('testimonals')
 
-    <!--====== Custom Quote Section Start ======-->
-    @include('instant_quote')
-
     <!--====== About Section Start ======-->
     @include('about')
 
 
     <!--====== Home Bottom Content Section Start ======-->
-    @include('homeBottomContent')
+    {{-- @include('homeBottomContent') --}}
 
 
 @endsection

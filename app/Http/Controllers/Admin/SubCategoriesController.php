@@ -31,42 +31,40 @@ class SubCategoriesController extends Controller
         request()->validate([
             'name' => 'required',
             'meta_title' => 'required',
-            'slug' => 'required|unique:sub_category',
-            'featured_image' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:2048',
-            'banner_image' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:2048'
+            'slug' => 'required|unique:sub_category'
         ]);
 
         $slug  = $request->slug;
         $slug = Str::slug($slug);
 
-        $featured_image = $request->file('featured_image');
-        if(!empty($featured_image)){
-            if($featured_image->isValid()){
-                $ext = $featured_image->getClientOriginalExtension();
-                $randomStr = date('Ymdhis').Str::random(10);
-                $filename = strtolower($randomStr).'.'.$ext;
-                $featured_image->move('public/upload/subCategory', $filename);
-                $featured_image = $filename;
-            }
-        }
-        $banner_image = $request->file('banner_image');
-        if(!empty($banner_image)){
-            if($banner_image->isValid()){
-                $ext = $banner_image->getClientOriginalExtension();
-                $randomStr = date('Ymdhis').Str::random(10);
-                $filename = strtolower($randomStr).'.'.$ext;
-                $banner_image->move('public/upload/subCategory', $filename);
-                $banner_image = $filename;
-            }
-        }
+        // $featured_image = $request->file('featured_image');
+        // if(!empty($featured_image)){
+        //     if($featured_image->isValid()){
+        //         $ext = $featured_image->getClientOriginalExtension();
+        //         $randomStr = date('Ymdhis').Str::random(10);
+        //         $filename = strtolower($randomStr).'.'.$ext;
+        //         $featured_image->move('public/upload/subCategory', $filename);
+        //         $featured_image = $filename;
+        //     }
+        // }
+        // $banner_image = $request->file('banner_image');
+        // if(!empty($banner_image)){
+        //     if($banner_image->isValid()){
+        //         $ext = $banner_image->getClientOriginalExtension();
+        //         $randomStr = date('Ymdhis').Str::random(10);
+        //         $filename = strtolower($randomStr).'.'.$ext;
+        //         $banner_image->move('public/upload/subCategory', $filename);
+        //         $banner_image = $filename;
+        //     }
+        // }
 
         $save = new SubCategoryModel;
         $save->name = $request->name;
         $save->category_id = $request->category_id;
         $save->slug  = $slug;
         $save->description  = $request->description;
-        $save->featured_image  = $featured_image;
-        $save->banner_image  = $banner_image;
+        // $save->featured_image  = $featured_image;
+        // $save->banner_image  = $banner_image;
         $save->status = $request->status;
         $save->meta_title = $request->meta_title;
         $save->meta_keyword = $request->meta_keyword;
@@ -90,9 +88,7 @@ class SubCategoriesController extends Controller
         request()->validate([
             'name' => 'required',
             'meta_title' => 'required',
-            'slug' => 'required|unique:sub_category,slug,'.$id,
-            'featured_image' => 'file|mimes:jpg,jpeg,png,gif,webp|max:2048',
-            'banner_image' => 'file|mimes:jpg,jpeg,png,gif,webp|max:2048'
+            'slug' => 'required|unique:sub_category,slug,'.$id
         ]);
 
         $slug  = $request->slug;
@@ -101,29 +97,29 @@ class SubCategoriesController extends Controller
 
         $sub_category = SubCategoryModel::getSingle($id);
 
-        if ($request->hasFile('featured_image')) {
-            $featured_image = $request->file('featured_image');
-            if($featured_image->isValid()){
-                $ext = $featured_image->getClientOriginalExtension();
-                $randomStr = date('Ymdhis').Str::random(10);
-                $filename = strtolower($randomStr).'.'.$ext;
-                $featured_image->move('public/upload/subCategory', $filename);
-                $featured_image = $filename;
-                $sub_category->featured_image  = $featured_image;
-            }
-        }
+        // if ($request->hasFile('featured_image')) {
+        //     $featured_image = $request->file('featured_image');
+        //     if($featured_image->isValid()){
+        //         $ext = $featured_image->getClientOriginalExtension();
+        //         $randomStr = date('Ymdhis').Str::random(10);
+        //         $filename = strtolower($randomStr).'.'.$ext;
+        //         $featured_image->move('public/upload/subCategory', $filename);
+        //         $featured_image = $filename;
+        //         $sub_category->featured_image  = $featured_image;
+        //     }
+        // }
 
-        if ($request->hasFile('banner_image')) {
-            $banner_image = $request->file('banner_image');
-            if($banner_image->isValid()){
-                $ext = $banner_image->getClientOriginalExtension();
-                $randomStr = date('Ymdhis').Str::random(10);
-                $filename = strtolower($randomStr).'.'.$ext;
-                $banner_image->move('public/upload/subCategory', $filename);
-                $banner_image = $filename;
-                $sub_category->banner_image  = $banner_image;
-            }
-        }
+        // if ($request->hasFile('banner_image')) {
+        //     $banner_image = $request->file('banner_image');
+        //     if($banner_image->isValid()){
+        //         $ext = $banner_image->getClientOriginalExtension();
+        //         $randomStr = date('Ymdhis').Str::random(10);
+        //         $filename = strtolower($randomStr).'.'.$ext;
+        //         $banner_image->move('public/upload/subCategory', $filename);
+        //         $banner_image = $filename;
+        //         $sub_category->banner_image  = $banner_image;
+        //     }
+        // }
 
 
         $sub_category->name = $request->name;

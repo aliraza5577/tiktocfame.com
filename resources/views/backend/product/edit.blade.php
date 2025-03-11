@@ -44,7 +44,7 @@
                                     <option {{ ($item->id == $product->sub_category_id) ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                            <input type="file" name="image[]" multiple accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Images">
+                            {{-- <input type="file" name="image[]" multiple accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Images">
                             <div style="color: red;">{{ $errors->first('image') }}</div>
 
                             @if(!empty($product->getImage->count()))
@@ -60,7 +60,7 @@
                                         @endif
                                     @endforeach
                                 </div>
-                            @endif
+                            @endif --}}
 
 
 
@@ -71,15 +71,10 @@
                             <label>Description</label>
                             <textarea class="editor" name="description" style="width: 100%;height: 150px;"> {{ old('description', $product->description) }}</textarea>
                             <br />
-                            <br />
-                            <label>Specifications</label>
-                            <textarea class="editor" name="additional_info" style="width: 100%;height: 150px;"> {{ old('additional_info', $product->additional_info) }}</textarea>
-                            <br />
-                            <br />
-                            <label>Shipping & Returns</label>
-                            <textarea class="editor" name="shipping" style="width: 100%;height: 150px;"> {{ old('shipping', $product->shipping) }}</textarea>
-                            <br />
-                            <br />
+                            <label>Actual Price</label>
+                            <input type="text" value="{{ old('actual_price', $product->actual_price) }}" name="actual_price" class="form-control form-control-rounded m-b-sm" placeholder="Actual Price">
+                            <label>Sale Price</label>
+                            <input type="text" value="{{ old('sale_price', $product->sale_price) }}" name="sale_price" class="form-control form-control-rounded m-b-sm" placeholder="Sale Price">
                             <label>Status</label>
                             <select name="status" class="form-select form-control form-control-rounded m-b-sm">
                                 <option {{ (old('status') == 0) ? 'selected' : '' }} value="0">Active</option>
