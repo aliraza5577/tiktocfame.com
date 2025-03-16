@@ -83,9 +83,12 @@
                 <ul class="sub-menu">
                     {{-- <li>
                         <a href="{{ url('admin/quote/instant') }}">Instant Quote</a>
-                    </li> --}}
+                    </li> 
                     <li>
                         <a href="{{ url('admin/quote/custom') }}">Custom Quote</a>
+                    </li> --}}
+                    <li>
+                        <a href="{{ url('admin/quote/contact') }}">Contact Queries</a>
                     </li>
                 </ul>
             </li>

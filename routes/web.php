@@ -100,6 +100,9 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/quote/custom', [CustomQuoteController::class, 'index']);
     Route::get('admin/quote/custom/{id}', [CustomQuoteController::class, 'getQuoteDetails']);
 
+    Route::get('admin/quote/contact', [ContactController::class, 'index']);
+    Route::get('admin/quote/contact/{id}', [ContactController::class, 'getQuoteDetails']);
+
 });
 
 

@@ -6,10 +6,10 @@
 <section class="banner-section p50">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-6 col-12">
+            <div class="col-md-7 col-12">
                 {!! $subcategory->banner_text !!}
             </div>
-            <div class="col-md-6 col-12">
+            <div class="col-md-5 col-12">
                <img src="{{ url('public/upload/subCategory/'.$subcategory->banner_image) }}" alt="banner" />
             </div>
         </div>

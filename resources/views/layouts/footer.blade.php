@@ -59,12 +59,12 @@
                 <div class="col-lg-6 col-12">
                     <div class="social-links">
                         <ul>
-                            {{-- <li><a href="https://www.pinterest.com/citipackaging/"><i class="fab fa-facebook-f"></i></a></li> --}}
+                            {{-- <li><a href="#"><i class="fab fa-facebook-f"></i></a></li> --}}
                             {{-- <li><a href="#"><i class="fab fa-instagram"></i></a></li> --}}
-                            <li><a href="https://www.pinterest.com/citipackaging/"><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a href="https://www.youtube.com/@citipackaging"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                             {{-- <li><a href="#"><i class="fab fa-linkedin"></i></a></li> --}}
-                            <li><a href="https://x.com/citipackaging"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                         </ul>
                     </div>
                 </div>

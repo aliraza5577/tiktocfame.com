@@ -4,111 +4,7 @@ $userStats = $user['userInfo']['stats'] ?? [];
 ?>
 
 @if(isset($userData['uniqueId']))
-    <script>
-        // Initialize global arrays
-        window.selectedVideos = [];
-        window.selectedVideoUrls = [];
-
-        // Create global namespace if not already defined
-        window.TikTokSelect = window.TikTokSelect || {};
-
-        // Configuration setup
-        TikTokSelect.config = {
-            maxSelections: 5,
-            totalQty: typeof product !== 'undefined' ? product.qty : 0
-        };
-
-        // Ensure script initializes only once
-        if (!TikTokSelect.initialized) {
-            TikTokSelect.initialized = true;
-
-            /**
-             * Handles video selection/deselection logic
-             */
-            TikTokSelect.selectVideo = function(videoId, videoUrl, cardElement) {
-                const isSelected = cardElement.classList.contains('selected');
-                const index = window.selectedVideos.indexOf(videoId);
-
-                if (isSelected) {
-                    // Deselect video
-                    cardElement.classList.remove('selected');
-                    if (index > -1) {
-                        window.selectedVideos.splice(index, 1);
-                        window.selectedVideoUrls = window.selectedVideoUrls.filter(item => item.id !== videoId);
-                    }
-                } else {
-                    // Check selection limit
-                    if (window.selectedVideos.length >= TikTokSelect.config.maxSelections) {
-                        alert(`Maximum ${TikTokSelect.config.maxSelections} videos allowed`);
-                        return;
-                    }
-                    // Select video
-                    cardElement.classList.add('selected');
-                    window.selectedVideos.push(videoId);
-                    window.selectedVideoUrls.push({ id: videoId, url: videoUrl });
-                }
-
-                TikTokSelect.updateSelectedInfo(); // Update UI
-            };
-
-            /**
-             * Updates selected video count & form inputs
-             */
-            TikTokSelect.updateSelectedInfo = function() {
-                const count = window.selectedVideos.length;
-                const selectedCountElement = document.getElementById('selected-count');
-                const selectedVideosInput = document.getElementById('selected_videos_input');
-                const selectedVideoUrlsInput = document.getElementById('selected_video_urls');
-
-                if (selectedCountElement) selectedCountElement.textContent = count;
-                if (selectedVideosInput) selectedVideosInput.value = window.selectedVideos.join(',');
-                if (selectedVideoUrlsInput) selectedVideoUrlsInput.value = JSON.stringify(window.selectedVideoUrls);
-
-                // Update per-post distribution if applicable
-                if (TikTokSelect.config.totalQty > 0) {
-                    const perPost = count > 0 ? Math.floor(TikTokSelect.config.totalQty / count) : 0;
-                    const perPostCountElement = document.getElementById('per-post-count');
-                    if (perPostCountElement) perPostCountElement.textContent = perPost;
-                }
-            };
-
-            /**
-             * Initializes event listeners
-             */
-            TikTokSelect.init = function() {
-                // Delegate video card clicks
-                document.addEventListener('click', function(e) {
-                    const card = e.target.closest('.video-card');
-                    if (card) {
-                        const videoId = card.dataset.videoId;
-                        const videoUrl = card.dataset.videoUrl;
-                        if (videoId) TikTokSelect.selectVideo(videoId, videoUrl, card);
-                    }
-                });
-
-                // Validate form submission
-                const paymentForm = document.getElementById('payment-form');
-                if (paymentForm) {
-                    paymentForm.addEventListener('submit', function(e) {
-                        if (window.selectedVideos.length === 0) {
-                            e.preventDefault();
-                            alert('Please select at least one video.');
-                        }
-                    });
-                }
-
-                // Initialize selected info display
-                TikTokSelect.updateSelectedInfo();
-            };
-
-            // Run initialization on DOM ready
-            if (document.readyState !== 'loading') {
-                TikTokSelect.init();
-            } else {
-                document.addEventListener('DOMContentLoaded', () => TikTokSelect.init());
-            }
-        }
-    </script>
+    
 
     {{-- Rest of your HTML remains unchanged --}}
     <div style="text-align: center; margin-bottom: 20px;">
@@ -411,8 +307,8 @@ $userStats = $user['userInfo']['stats'] ?? [];
     </div>
 
     <div class="payment-section text-center mt-4">
-        <form action="{{ route('stripe.payment') }}" method="POST" id="payment-form"
-              data-service-type="{{ $product->service_type ?? '' }}">
+        <form action="{{ route('stripe.payment') }}" method="POST" id="payment-form" 
+              data-service-type="{{ $product->service_type ?? '' }}" onsubmit="return false;">
             @csrf
             <input type="hidden" name="username" value="{{ $userData['uniqueId'] ?? '' }}">
             <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -423,103 +319,14 @@ $userStats = $user['userInfo']['stats'] ?? [];
             <input type="hidden" name="selected_videos" id="selected_videos_input" value="">
             <input type="hidden" name="video_urls" id="selected_video_urls" value="">
             @endif
-
-            <button type="submit" class="btn btn-custom w-100 py-2" id="submit-button">
+    
+            <button type="button" class="btn btn-custom w-100 py-2" id="submit-button">
                 <span id="button-text">Place Order</span>
                 <div class="spinner d-none" id="spinner"></div>
             </button>
         </form>
     </div>
-
+    
     <!-- Add hidden input for product sale price to be used by JavaScript -->
     <input type="hidden" id="product-sale-price" value="{{ $product->sale_price }}">
-
-    {{-- Include the external JS files --}}
-    @push('scripts')
-    <script src="{{ url('public/front/assets/js/tiktok-select.js') }}"></script>
-    <script src="{{ url('public/front/assets/js/main.js') }}"></script>
-    <script>
-        // Update total price input whenever upsells are added/removed
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to update the total price input based on the displayed total price
-            function updateTotalPriceInput() {
-                const totalPriceElement = document.getElementById('total-price');
-                const totalPriceInput = document.getElementById('total-price-input');
-                const amountInput = document.getElementById('amount-input');
-
-                if (totalPriceElement && totalPriceInput) {
-                    const priceText = totalPriceElement.textContent.replace(/[^\d.-]/g, '');
-                    const totalPrice = parseFloat(priceText);
-
-                    if (!isNaN(totalPrice)) {
-                        totalPriceInput.value = totalPrice.toFixed(2);
-                        if (amountInput) amountInput.value = totalPrice.toFixed(2);
-                        console.log('Real-time update: total_price input set to', totalPrice.toFixed(2));
-                    }
-                }
-            }
-
-            // Monitor changes to the total price display
-            const totalPriceObserver = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.type === 'characterData' || mutation.type === 'childList') {
-                        updateTotalPriceInput();
-                    }
-                });
-            });
-
-            const totalPriceElement = document.getElementById('total-price');
-            if (totalPriceElement) {
-                totalPriceObserver.observe(totalPriceElement, {
-                    characterData: true,
-                    childList: true,
-                    subtree: true
-                });
-            }
-
-            // Also listen for clicks on upsell buttons to ensure updates
-            document.addEventListener('click', function(e) {
-                if (e.target.closest('.add-upsell-btn')) {
-                    // Wait a small amount of time for the price to be updated in the DOM
-                    setTimeout(updateTotalPriceInput, 50);
-                }
-            });
-
-            // Form submission handler
-            const paymentForm = document.getElementById('payment-form');
-            if (paymentForm) {
-                paymentForm.addEventListener('submit', function(e) {
-                    // Stop the default submission
-                    e.preventDefault();
-
-                    // First validate video selection if applicable
-                    if (window.selectedVideos && window.selectedVideos.length === 0 &&
-                        paymentForm.getAttribute('data-service-type') !== 'followers') {
-                        alert('Please select at least one video before placing your order.');
-                        return false;
-                    }
-
-                    // Final update of price inputs before submission
-                    updateTotalPriceInput();
-
-                    // Show loading state
-                    const submitButton = document.getElementById('submit-button');
-                    const buttonText = document.getElementById('button-text');
-                    const spinner = document.getElementById('spinner');
-
-                    if (submitButton) submitButton.disabled = true;
-                    if (buttonText) buttonText.textContent = 'Processing...';
-                    if (spinner) spinner.classList.remove('d-none');
-
-                    // Now manually submit the form
-                    console.log('Submitting form with total price:', document.getElementById('total-price-input').value);
-                    paymentForm.submit();
-                }, true);
-            }
-
-            // Run once on page load to ensure initial values are set
-            updateTotalPriceInput();
-        });
-    </script>
-    @endpush
 @endif
