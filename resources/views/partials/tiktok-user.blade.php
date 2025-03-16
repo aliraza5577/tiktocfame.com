@@ -124,27 +124,27 @@ $userStats = $user['userInfo']['stats'] ?? [];
     </div>
     <div class="userInfoWrap text-center">
         <div class="row gy-5">
-            <div class="col-md-4">
+            <div class="col-md-4 col-6">
                 <h3><strong>Username</strong></h3>
                 <p>{{ $userData['uniqueId'] }}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-6">
                 <h3><strong>Nickname</strong></h3>
                 <p>{{ $userData['nickname'] }}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-6">
                 <h3><strong>Followers</strong></h3>
                 <p>{{ $userStats['followerCount'] ?? 0 }}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-6">
                 <h3><strong>Following</strong></h3>
                 <p>{{ $userStats['followingCount'] ?? 0 }}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-6">
                 <h3><strong>Hearts</strong></h3>
                 <p>{{ $userStats['heart'] ?? 0 }}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-6">
                 <h3><strong>Videos</strong></h3>
                 <p>{{ $userStats['videoCount'] ?? 0 }}</p>
             </div>

@@ -3,14 +3,14 @@
     <div class="footer-widgets-area">
         <div class="container container-1360">
             <div class="row">
-                <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="col-lg-3 col-sm-6 col-6">
                     <div class="widget address-widget">
                         <span class="widget-title">Our Address</span>
                         <p>453 S Spring St Ste 400 # 544<br> Los Angeles ,CA 90013</p>
                         <p><a href="tel:+13237639393">+1 (323) 763-9393</a> <br><a href="mailto:sales@domain.com"> sales@domain.com</a></p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="col-lg-3 col-sm-6 col-6">
                     <div class="widget nav-widget">
                         <span class="widget-title">Quick Links</span>
                         <ul>
@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="col-lg-3 col-sm-6 col-6">
                     <div class="widget nav-widget">
                         <span class="widget-title">Categories</span>
                         <ul>
@@ -39,7 +39,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="col-lg-3 col-sm-6 col-6">
                     <div class="widget nav-widget">
                         <span class="widget-title">Helpful Links</span>
                         <ul>

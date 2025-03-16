@@ -39,12 +39,16 @@
 
                             {{-- <label>Featured Image</label>
                             <input type="file" name="featured_image" accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Image">
-                            <div style="color: red;">{{ $errors->first('featured_image') }}</div>
+                            <div style="color: red;">{{ $errors->first('featured_image') }}</div> --}}
 
                             <label>Banner Image</label>
                             <input type="file" name="banner_image" accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Image">
-                            <div style="color: red;">{{ $errors->first('banner_image') }}</div> --}}
+                            <div style="color: red;">{{ $errors->first('banner_image') }}</div>
 
+                            <br />
+                            <label>Banner Text</label>
+                            <textarea class="editor" name="banner_text" style="width: 100%;height: 150px;"> {{ old('banner_text') }}</textarea>
+                            <br />
 
                             <br />
                             <label>Description</label>

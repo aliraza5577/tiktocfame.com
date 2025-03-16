@@ -6,7 +6,7 @@
     <section class="banner-section p50">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-6">
+                <div class="col-md-6 col-12">
                     <h1>Buy TikTok Followers, Likes and Views – Starting at Just $1.48!</h1>
                     <p>TikTocFame offers real TikTok Followers, Likes, Views and Comments that help you build credibility, boost engagements and enhance your social media success.</p>
                     <div class="trust-pilot-area">
@@ -14,7 +14,7 @@
                         <p>4.8 | Rated Excellent on Trustpilot</p>
                     </div>
                 </div>
-                <div class="col-6 text-right">
+                <div class="col-md-6 col-12 text-right">
                    <img src="{{ url('public/front/assets/img/banner_home.webp') }}" alt="banner" />
                 </div>
             </div>

@@ -47,16 +47,16 @@ class SubCategoriesController extends Controller
         //         $featured_image = $filename;
         //     }
         // }
-        // $banner_image = $request->file('banner_image');
-        // if(!empty($banner_image)){
-        //     if($banner_image->isValid()){
-        //         $ext = $banner_image->getClientOriginalExtension();
-        //         $randomStr = date('Ymdhis').Str::random(10);
-        //         $filename = strtolower($randomStr).'.'.$ext;
-        //         $banner_image->move('public/upload/subCategory', $filename);
-        //         $banner_image = $filename;
-        //     }
-        // }
+        $banner_image = $request->file('banner_image');
+        if(!empty($banner_image)){
+            if($banner_image->isValid()){
+                $ext = $banner_image->getClientOriginalExtension();
+                $randomStr = date('Ymdhis').Str::random(10);
+                $filename = strtolower($randomStr).'.'.$ext;
+                $banner_image->move('public/upload/subCategory', $filename);
+                $banner_image = $filename;
+            }
+        }
 
         $save = new SubCategoryModel;
         $save->name = $request->name;
@@ -64,7 +64,8 @@ class SubCategoriesController extends Controller
         $save->slug  = $slug;
         $save->description  = $request->description;
         // $save->featured_image  = $featured_image;
-        // $save->banner_image  = $banner_image;
+        $save->banner_image  = $banner_image;
+        $save->banner_text  = $request->banner_text;
         $save->status = $request->status;
         $save->meta_title = $request->meta_title;
         $save->meta_keyword = $request->meta_keyword;
@@ -109,23 +110,24 @@ class SubCategoriesController extends Controller
         //     }
         // }
 
-        // if ($request->hasFile('banner_image')) {
-        //     $banner_image = $request->file('banner_image');
-        //     if($banner_image->isValid()){
-        //         $ext = $banner_image->getClientOriginalExtension();
-        //         $randomStr = date('Ymdhis').Str::random(10);
-        //         $filename = strtolower($randomStr).'.'.$ext;
-        //         $banner_image->move('public/upload/subCategory', $filename);
-        //         $banner_image = $filename;
-        //         $sub_category->banner_image  = $banner_image;
-        //     }
-        // }
+        if ($request->hasFile('banner_image')) {
+            $banner_image = $request->file('banner_image');
+            if($banner_image->isValid()){
+                $ext = $banner_image->getClientOriginalExtension();
+                $randomStr = date('Ymdhis').Str::random(10);
+                $filename = strtolower($randomStr).'.'.$ext;
+                $banner_image->move('public/upload/subCategory', $filename);
+                $banner_image = $filename;
+                $sub_category->banner_image  = $banner_image;
+            }
+        }
 
 
         $sub_category->name = $request->name;
         $sub_category->category_id = $request->category_id;
         $sub_category->name = $request->name;
         $sub_category->slug  = $slug;
+        $sub_category->banner_text  = $request->banner_text;
         $sub_category->description  = $request->description;
         $sub_category->status = $request->status;
         $sub_category->meta_title = $request->meta_title;

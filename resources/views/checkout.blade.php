@@ -421,7 +421,10 @@
                                     showToast('User not found. Please try another username.', 'error');
                                     return;
                                 }
-                                document.querySelector('.checkout-container').innerHTML = await response.text();
+                                
+                                // Only update the form content, not the entire container
+                                const formContent = await response.text();
+                                document.getElementById('checkoutForm').innerHTML = formContent;
                             } catch (error) {
                                 console.error('Error:', error);
                                 showToast('Something went wrong. Please try again.', 'error');

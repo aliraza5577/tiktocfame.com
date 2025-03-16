@@ -4,6 +4,7 @@
     --secondary-color: #0a9396;
     --third-color: #333;
     --fourth-color: #fff;
+    --fifth-color: #ae2012;
     --font-size: 15px;
 }
 body {
@@ -234,18 +235,19 @@ a:hover {
 .category-wrap .nav-tabs{justify-content: center;border: transparent;padding: 30px 0;}
 .category-wrap button{background: var(--primary-color);margin: 0 5px;border-radius: 5px !important;border: transparent !important;}
 .category-wrap button.active {background: var(--secondary-color) !important;color: #fff !important;}
+.category-wrap button {color: #fff;margin: 4px;}
 .category-wrap .tab-pane{flex-wrap: wrap;gap: 10px;justify-content: center;}
 .category-wrap .tab-pane.active{display: flex;}
 .category-wrap .card-single{border: 1px solid var(--primary-color);border-radius: 10px;width: 250px;padding: 20px 0;}
 .category-wrap .card-single p{font-size: 30px;margin-top: 7px;}
-.category-wrap .card-single p span {font-size: 24px;position: relative;display: inline-block;margin-right: 10px;}
-.category-wrap .card-single p span::after {position: absolute;height: 3px;background: var(--primary-color);top: 20px;content: "";left: -5px;right: -5px;}
+.category-wrap .card-single p span {font-size: 18px;position: relative;display: inline-block;margin-right: 10px;color: var(--fifth-color);}
+.category-wrap .card-single p span::after {position: absolute;height: 3px;background: var(--fifth-color);top: 13px;content: "";left: -5px;right: -5px;}
 .category-wrap .card-single h3{margin-top: 10px;font-size: 24px;}
 .category-wrap .card-single a{background: var(--primary-color);color: #fff;display: inline-block;width: 130px;height: 40px;line-height: 40px;margin-top: 10px;border-radius: 5px;}
 .category-wrap .card-single a:hover h3{color: var(--secondary-color);}
 .main-btn{background: var(--secondary-color);color: #fff;padding: 10px 25px;letter-spacing: 1px;border-radius: 30px;}
 .main-btn:hover{opacity: .7;}
-
+.category-wrap .card-single a:hover{background-color: var(--secondary-color);}
 
 /* Products Area */
 .productsWrap .card-single img{border-radius: 10px;}
@@ -463,8 +465,8 @@ footer .footer-copyright-area .copyright-text span {color: #fff;font-weight: 700
     .menu-column {width: 100%;padding: 10px 0;}
     .p50, .p80{padding-left: 10px;padding-right: 10px;}
     .testimonial-single {margin-top: 30px;}
-    .navbar-toggler-icon {font-size: 24px;}
-    .navbar-collapse {position: relative;z-index: 999; }
+    .navbar-toggler-icon {font-size: 24px;color: #fff;}
+    .navbar-collapse {position: relative;z-index: 999;}
     .dropdown-menu {position: static;float: none;width: 100%;box-shadow: none;padding: 0;margin: 0;background-color: #fff;}
     .dropdown-item {padding: 10px 15px;}
     .navbar-nav > li > .dropdown-menu {border-radius: 0;}
@@ -488,4 +490,13 @@ footer .footer-copyright-area .copyright-text span {color: #fff;font-weight: 700
     .contactWrap{padding-top: 0;}
     .contactWrap .header h1{margin-bottom: 15px;}
     h1 {font-size: 28px;}
+    .category-wrap button {font-size: 13px;}
+    .category-wrap .card-single {width: 48%;padding: 10px 0;}
+    .category-wrap .card-single h3 {margin-top: 5px;font-size: 18px;}
+    .category-wrap .card-single p {font-size: 24px;}
+    .category-wrap .card-single a {width: 110px;}
+    .videos-section .col-6{padding:5px !important;}
+    .videos-section .card-body{padding: 5px;}
+    .videos-section .card-body img{margin-bottom: 5px;height:60px !important;}
+    .checkout-container {padding: 10px;}
 }

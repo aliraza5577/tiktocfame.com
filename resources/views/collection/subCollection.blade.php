@@ -6,16 +6,11 @@
 <section class="banner-section p50">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-6">
-                <h1>Buy TikTok followers, likes and views starting at $1.49</h1>
-                <p>TikTokFame stands out as the ultimate TikTok growth platform for all the right reasons! Dive into our stellar range of high quality services showcased below.</p>
-                <div class="trust-pilot-area">
-                    <img src="{{ url('public/front/assets/img/stars.svg') }}" alt="stars">
-                    <p>4.8 | Rated Excellent on Trustpilot</p>
-                </div>
+            <div class="col-md-6 col-12">
+                {!! $subcategory->banner_text !!}
             </div>
-            <div class="col-6">
-               <img src="{{ url('public/front/assets/img/about.png') }}" alt="banner" />
+            <div class="col-md-6 col-12">
+               <img src="{{ url('public/upload/subCategory/'.$subcategory->banner_image) }}" alt="banner" />
             </div>
         </div>
     </div>
