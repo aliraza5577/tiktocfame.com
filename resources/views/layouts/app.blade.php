@@ -53,11 +53,14 @@
 
     <!--====== jquery js ======-->
     <script src="{{ url('public/front/assets/js/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+	<!--====== Bootstrap js ======-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!--====== Main js ======-->
     <script src="{{ url('public/front/assets/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    @stack('scripts')
+    {{-- @stack('scripts') --}}
     @yield('script')
 </body>
 

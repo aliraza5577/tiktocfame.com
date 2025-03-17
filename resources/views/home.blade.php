@@ -139,7 +139,7 @@
 
 @endsection
 @section('script')
-<script>
+{{-- <script>
     const readMoreBtn = document.querySelector('.read-more-btn');
     const moreContent = document.querySelector('.moreContent');
 
@@ -153,5 +153,5 @@
         }
     });
 
-</script>
+</script> --}}
 @endsection

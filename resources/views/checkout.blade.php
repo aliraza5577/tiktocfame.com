@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <style>
@@ -421,10 +421,7 @@
                                     showToast('User not found. Please try another username.', 'error');
                                     return;
                                 }
-                                
-                                // Only update the form content, not the entire container
-                                const formContent = await response.text();
-                                document.getElementById('checkoutForm').innerHTML = formContent;
+                                document.querySelector('.checkout-container').innerHTML = await response.text();
                             } catch (error) {
                                 console.error('Error:', error);
                                 showToast('Something went wrong. Please try again.', 'error');
@@ -514,4 +511,5 @@
 @endsection
 
 @section('script')
+
 @endsection
