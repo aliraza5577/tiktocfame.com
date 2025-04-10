@@ -3,26 +3,26 @@
     <div class="footer-widgets-area">
         <div class="container container-1360">
             <div class="row">
-                <div class="col-lg-3 col-sm-6 col-6">
+                <div class="col-lg-4 col-sm-6 col-6">
                     <div class="widget address-widget">
                         <span class="widget-title">Our Address</span>
-                        <p>453 S Spring St Ste 400 # 544<br> Los Angeles ,CA 90013</p>
-                        <p><a href="tel:+13237639393">+1 (323) 763-9393</a> <br><a href="mailto:sales@domain.com"> sales@domain.com</a></p>
+                        <p>2nd Floor College House, 17 King Edwards Road,<br> Ruislip, London, United Kingdom, HA4 7AE</p>
+                        <p><a href="tel:+12494956156">+1 (249) 495-6156</a> <br><a href="mailto:sales@domain.com"> sales@domain.com</a></p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-6">
+                <div class="col-lg-4 col-sm-6 col-6">
                     <div class="widget nav-widget">
                         <span class="widget-title">Quick Links</span>
                         <ul>
                             <li><a href="{{ url('') }}">Home</a></li>
-                            <li><a href="{{ url('about') }}">About Us</a></li>
-                            <li><a href="{{ url('gallery') }}">Gallery</a></li>
                             <li><a href="{{ url('blog') }}">Blog</a></li>
+                            <li><a href="{{ url('privacy-policy') }}">Privacy and Security</a></li>
+                            <li><a href="{{ url('terms-and-condition') }}">Terms & condition</a></li>
                             <li><a href="{{ url('contact') }}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-6">
+                <div class="col-lg-4 col-sm-6 col-6">
                     <div class="widget nav-widget">
                         <span class="widget-title">Categories</span>
                         <ul>
@@ -39,17 +39,16 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-6">
+                {{-- <div class="col-lg-3 col-sm-6 col-6">
                     <div class="widget nav-widget">
                         <span class="widget-title">Helpful Links</span>
                         <ul>
                             <li><a href="{{ url('about') }}">About Us</a></li>
                             <li><a href="{{ url('contact') }}">Contact Us</a></li>
-                            <li><a href="{{ url('privacy-policy') }}">Privacy and Security</a></li>
-                            <li><a href="{{ url('terms-and-condition') }}">Terms & condition</a></li>
+
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

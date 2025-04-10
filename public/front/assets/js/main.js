@@ -1,3 +1,13 @@
+$(document).ready(function() {
+    $(".nav-open-btn").click(function(){
+        $(".navbar-mobile").addClass("animate__animated animate__fadeInTopRight");
+        $(".navbar-mobile").toggleClass("active");
+    });
+    $(".nav-close-btn").click(function(){
+        $(".navbar-mobile").toggleClass("active");
+    });
+});
+
 // Initialize global arrays
 window.selectedVideos = [];
 window.selectedVideoUrls = [];

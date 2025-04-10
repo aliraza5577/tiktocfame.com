@@ -124,14 +124,14 @@ $userStats = $user['userInfo']['stats'] ?? [];
     </div>
     <div class="userInfoWrap text-center">
         <div class="row gy-5">
-            <div class="col-md-4 col-6">
+            {{-- <div class="col-md-4 col-6">
                 <h3><strong>Username</strong></h3>
                 <p>{{ $userData['uniqueId'] }}</p>
             </div>
             <div class="col-md-4 col-6">
                 <h3><strong>Nickname</strong></h3>
                 <p>{{ $userData['nickname'] }}</p>
-            </div>
+            </div> --}}
             <div class="col-md-4 col-6">
                 <h3><strong>Followers</strong></h3>
                 <p>{{ $userStats['followerCount'] ?? 0 }}</p>
@@ -140,14 +140,14 @@ $userStats = $user['userInfo']['stats'] ?? [];
                 <h3><strong>Following</strong></h3>
                 <p>{{ $userStats['followingCount'] ?? 0 }}</p>
             </div>
-            <div class="col-md-4 col-6">
+            {{-- <div class="col-md-4 col-6">
                 <h3><strong>Hearts</strong></h3>
                 <p>{{ $userStats['heart'] ?? 0 }}</p>
             </div>
             <div class="col-md-4 col-6">
                 <h3><strong>Videos</strong></h3>
                 <p>{{ $userStats['videoCount'] ?? 0 }}</p>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -177,10 +177,11 @@ $userStats = $user['userInfo']['stats'] ?? [];
             background: #ff4d4f !important;
             color: white !important;
             border-radius: 50% !important;
-            width: 30px !important;
-            height: 30px !important;
+            width: 20px !important;
+            height: 20px !important;
             align-items: center !important;
             justify-content: center !important;
+            font-size: 11px;
         }
         .video-card.selected .video-select-overlay {
             display: flex !important;
@@ -299,7 +300,7 @@ $userStats = $user['userInfo']['stats'] ?? [];
             <span id="selected-count">0</span> posts selected / <span id="per-post-count">{{ $product->qty }}</span> {{ $product->service_type }} per post
         </div>
         <input type="hidden" id="total-qty" value="{{ $product->qty }}">
-        <div class="row">
+        <div class="row postsWrap">
             @foreach($videos['itemList'] as $index => $video)
                 @if($index < 12)
                 <div class="col-md-4 col-6 mb-3">
@@ -313,11 +314,15 @@ $userStats = $user['userInfo']['stats'] ?? [];
                         <div class="card-body text-center position-relative">
                             <img src="{{ str_replace('http://', 'https://', $video['video']['cover'] ?? '') }}"
                                  alt="Video thumbnail"
-                                 class="img-fluid mb-2"
-                                 style="height: 150px; object-fit: cover; width: 100%;">
+                                 class="img-fluid"
+                                 style="height: 200px; object-fit: cover; width: 100%;">
                             <p class="card-text">
-                                <i class="fas fa-heart"></i> {{ number_format($video['stats']['diggCount'] ?? 0) }}
-                                <i class="fas fa-eye ml-2"></i> {{ number_format($video['stats']['playCount'] ?? 0) }}
+                                <span class="post-likes">
+                                    <i class="fas fa-heart"></i> {{ number_format($video['stats']['diggCount'] ?? 0) }}
+                                </span>
+                                <span class="post-views">
+                                    <i class="fas fa-eye ml-2"></i> {{ number_format($video['stats']['playCount'] ?? 0) }}
+                                </span>
                             </p>
                         </div>
                     </div>

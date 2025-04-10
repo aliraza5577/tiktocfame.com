@@ -15,7 +15,23 @@ class HomeController extends Controller
         $data['meta_title'] = 'Home';
         $data['meta_keyword'] = 'Home';
         $data['meta_desc'] = 'Home';
-        $data['seo_schema'] = 'Home';
+        $data['seo_schema'] = '{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Buy TikTok Followers",
+  "image": "",
+  "description": "TikTokFame stands out as the ultimate TikTok growth platform for all the right reasons! Dive into our stellar range of high quality services showcased below.",
+  "brand": {
+    "@type": "Brand",
+    "name": "TikTocFame"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://tiktocfame.com/buy-tiktok-followers",
+    "priceCurrency": "USD",
+    "price": "1.49"
+  }
+}';
         $data['getSubCategories'] = SubCategoryModel::getActiveRecord();
         foreach ($data['getSubCategories'] as $subcategory) {
             $subcategory->products = ProductModel::where('sub_category_id', $subcategory->id)->get();

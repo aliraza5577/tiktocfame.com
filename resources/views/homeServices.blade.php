@@ -3,7 +3,7 @@
         <div class="row align-items-center gx-4">
 
             <div class="col-md-6">
-                <img src="{{ url('public/front/assets/img/tiktok-followers.png') }}" alt="TIKTOK Followers" />
+                <img src="{{ url('public/front/assets/img/tiktok-followers2.png') }}" alt="TIKTOK Followers" />
             </div>
             <div class="col-md-6">
                 <h2>Buy Genuine TikTok Followers for Your Account</h2>
@@ -27,7 +27,7 @@
                 <a href="{{ url('tiktok-likes') }}">All Likes Packages</a>
             </div>
             <div class="col-md-6">
-                <img src="{{ url('public/front/assets/img/tiktok-likes.png') }}" alt="About Us" />
+                <img src="{{ url('public/front/assets/img/tiktok-likes2.png') }}" alt="Buy Real TikTok Likes for Your Videos" />
             </div>
 
         </div>
@@ -41,7 +41,7 @@
         <div class="row align-items-center gx-4">
 
             <div class="col-md-6">
-                <img src="{{ url('public/front/assets/img/tiktok-views.png') }}" alt="About Us" />
+                <img src="{{ url('public/front/assets/img/tiktok-views2.png') }}" alt="Buy Instant TikTok Views for Your Posts" />
             </div>
             <div class="col-md-6">
                 <h2>Buy Instant TikTok Views for Your Posts</h2>

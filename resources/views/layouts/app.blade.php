@@ -25,11 +25,11 @@
     <link rel="stylesheet" href="{{ url('public/front/assets/css/font-awesome.min.css') }}" />
     <!--====== Slick  css ======-->
     <link rel="stylesheet" href="{{ url('public/front/assets/css/slick.css') }}" />
-    
+
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!--====== Style css ======-->
     <link rel="stylesheet" href="{{ url('public/front/assets/css/style.css') }}" />
-    
+
 
 
     <script type="application/ld+json">
@@ -39,17 +39,12 @@
 
 <body>
     @include('layouts.header')
-
     @yield('content')
-
     @include('layouts.footer')
-
-
 
     <script type="text/javascript">
         window.appUrl = "{{ url('/') }}";
     </script>
-
 
     <!--====== jquery js ======-->
     <script src="{{ url('public/front/assets/js/jquery.min.js') }}"></script>
@@ -59,11 +54,9 @@
     <!--====== Main js ======-->
     <script src="{{ url('public/front/assets/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
     {{-- @stack('scripts') --}}
     @yield('script')
 </body>
-
 </html>
 
 

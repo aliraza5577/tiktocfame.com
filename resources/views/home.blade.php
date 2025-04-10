@@ -15,7 +15,12 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-12 text-right">
-                   <img src="{{ url('public/front/assets/img/banner_home.webp') }}" alt="banner" />
+                    <img src="{{ url('public/front/assets/img/banner_home.webp') }}" alt="banner" />
+                    <div class="services-icons">
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-user"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -139,19 +144,4 @@
 
 @endsection
 @section('script')
-{{-- <script>
-    const readMoreBtn = document.querySelector('.read-more-btn');
-    const moreContent = document.querySelector('.moreContent');
-
-    readMoreBtn.addEventListener('click', function () {
-        if (moreContent.style.display === "none") {
-            moreContent.style.display = "inline"; // Show the hidden content
-            readMoreBtn.textContent = "Read Less"; // Change button text to 'Read Less'
-        } else {
-            moreContent.style.display = "none"; // Hide the content again
-            readMoreBtn.textContent = "Read More"; // Change button text back to 'Read More'
-        }
-    });
-
-</script> --}}
 @endsection

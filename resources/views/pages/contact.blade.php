@@ -18,7 +18,7 @@
                     <h2 class="pb20">How We Help You</h2>
                     {{-- <p>Our experts are available at every stage-from the first meeting to design and customization, all the way through to production and on-time delivery. We make sure that you have smooth and easy solutions to your packaging requirements.</p> --}}
                     <h3>Need Help Now?</h3>
-                    <p>For immediate assistance, reach out to us directly: <a href="mailto:sales@domain.com">sales@domain.com</a> or call us at <a href="tel:+13237639393">+1 (323) 763-9393</a> to speak with one of our representatives today.</p>
+                    <p>For immediate assistance, reach out to us directly: <a href="mailto:sales@domain.com">sales@domain.com</a> or call us at <a href="tel:+12494956156">+1 (249) 495-6156</a> to speak with one of our representatives today.</p>
                     <p>At TikToc Fame, we’re always here to answer your questions and provide the perfect packaging solutions for your business.</p>
 
                     {{-- <div class="row text-center">

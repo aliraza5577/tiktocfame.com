@@ -26,10 +26,16 @@
         {{-- Mobile Navbar --}}
         <div class="container d-md-none">
             <nav class="navbar">
-                <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon fas fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <a href="#" class="nav-open-btn">
+                    <span class="fas fa-bars"></span>
+                </a>
+                <div class="navbar-mobile animate__animated">
+                    <div class="navbar-mobile-header">
+                        <h3>Menu</h3>
+                        <a href="#" class="nav-close-btn">
+                            <span class="fas fa-times"></span>
+                        </a>
+                    </div>
                     <ul class="menu">
                         <li><a href="{{ url('') }}">Home</a></li>
                         @foreach ($getSubCategories as $mainCat)
@@ -46,22 +52,3 @@
 </header>
 <!--====== Header part end ======-->
 
-
-@section('script')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        const navbarIcon = navbarToggler.querySelector('.navbar-toggler-icon');
-
-        navbarToggler.addEventListener('click', function () {
-            if (navbarToggler.getAttribute('aria-expanded') === 'true') {
-                navbarIcon.classList.remove('fa-bars');
-                navbarIcon.classList.add('fa-times');
-            } else {
-                navbarIcon.classList.remove('fa-times');
-                navbarIcon.classList.add('fa-bars');
-            }
-        });
-    });
-</script>
-@endsection
