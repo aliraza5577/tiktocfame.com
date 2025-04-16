@@ -15,12 +15,16 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-12 text-right">
-                    <img src="{{ url('public/front/assets/img/banner_home.webp') }}" alt="banner" />
-                    <div class="services-icons">
+                    {{-- <img src="{{ url('public/front/assets/img/banner.gif') }}" alt="banner" /> --}}
+                    <video autoplay loop muted playsinline>
+                        <source src="{{ url('public/front/assets/img/banner.mp4') }}" type="video/mp4">
+                        Your browser does not support the video.
+                      </video>
+                    {{-- <div class="services-icons">
                         <i class="fas fa-eye"></i>
                         <i class="fas fa-heart"></i>
                         <i class="fas fa-user"></i>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

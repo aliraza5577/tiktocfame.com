@@ -50,6 +50,33 @@
                             <textarea class="editor" name="banner_text" style="width: 100%;height: 150px;"> {{ old('banner_text') }}</textarea>
                             <br />
 
+                            <label>Section 1 Image</label>
+                            <input type="file" name="section1_image" accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Image">
+                            <div style="color: red;">{{ $errors->first('section1_image') }}</div>
+
+                            <br />
+                            <label>Section 1 Text</label>
+                            <textarea class="editor" name="section1_text" style="width: 100%;height: 150px;"> {{ old('section1_text') }}</textarea>
+                            <br />
+
+                            <label>Section 2 Image</label>
+                            <input type="file" name="section2_image" accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Image">
+                            <div style="color: red;">{{ $errors->first('section2_image') }}</div>
+
+                            <br />
+                            <label>Section 2 Text</label>
+                            <textarea class="editor" name="section2_text" style="width: 100%;height: 150px;"> {{ old('section2_text') }}</textarea>
+                            <br />
+
+                            <label>Section 3 Image</label>
+                            <input type="file" name="section3_image" accept="image/*" class="form-control form-control-rounded m-b-sm" placeholder="Upload Image">
+                            <div style="color: red;">{{ $errors->first('section3_image') }}</div>
+
+                            <br />
+                            <label>Section 3 Text</label>
+                            <textarea class="editor" name="section3_text" style="width: 100%;height: 150px;"> {{ old('section3_text') }}</textarea>
+                            <br />
+
                             <br />
                             <label>Description</label>
                             <textarea class="editor" name="description" style="width: 100%;height: 150px;"> {{ old('description') }}</textarea>

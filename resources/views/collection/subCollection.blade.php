@@ -49,6 +49,56 @@
     </section>
 
 
+    {{-- Section 1 --}}
+    @if (!empty($subcategory->section1_text))
+        <section class="aboutWrap pb80">
+            <div class="container">
+                <div class="row align-items-center gx-4">
+                    <div class="col-md-6">
+                        <img src="{{ url('public/upload/subCategory/sections/'.$subcategory->section1_image) }}" alt="{{ $subcategory->name }}">
+                    </div>
+                    <div class="col-md-6">
+                        {!! $subcategory->section1_text !!}
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    {{-- Section 2 --}}
+    @if (!empty($subcategory->section2_text))
+        <section class="aboutWrap pb80">
+            <div class="container">
+                <div class="row align-items-center gx-4">
+                    <div class="col-md-6">
+                        {!! $subcategory->section2_text !!}
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ url('public/upload/subCategory/sections/'.$subcategory->section2_image) }}" alt="{{ $subcategory->name }}">
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    {{-- Section 3 --}}
+    @if (!empty($subcategory->section3_text))
+        <section class="aboutWrap pb80">
+            <div class="container">
+                <div class="row align-items-center gx-4">
+                    <div class="col-md-6">
+                        <img src="{{ url('public/upload/subCategory/sections/'.$subcategory->section3_image) }}" alt="{{ $subcategory->name }}">
+                    </div>
+                    <div class="col-md-6">
+                        {!! $subcategory->section3_text !!}
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+
+
 
     {{-- Dynamic Content --}}
     @if (!empty($subcategory->description))

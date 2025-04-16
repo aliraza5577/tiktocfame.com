@@ -9,7 +9,9 @@
     <meta name="description" content="{{ $meta_desc }}" data-rh="true">
     <meta name="keywords" content="{{ $meta_keyword }}">
     <meta name="author" content="TikTok Fame">
-    <meta name="robots" content="noindex, nofollow">
+    {{-- <meta name="robots" content="noindex, nofollow"> --}}
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="canonical" href="{{ url()->current() }}" />
     <!--====== Title ======-->
@@ -58,7 +60,5 @@
     @yield('script')
 </body>
 </html>
-
-
 
 

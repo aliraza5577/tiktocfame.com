@@ -2,10 +2,10 @@
 <header class="sticky-header">
     <div class="container-fluid">
         {{-- Top Bar --}}
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-md-3 col-12">
                 <div class="site-logo">
-                    <a href="{{ url('') }}" title="Logo"><img src="{{ url('public/front/assets/img/logo.svg') }}" alt="TikTok Fame" /></a>
+                    <a href="{{ url('') }}" title="Logo"><img src="{{ url('public/front/assets/img/logo.png') }}" alt="TikTok Fame" /></a>
                 </div>
             </div>
             <div class="col-md-9 d-md-block d-none">
